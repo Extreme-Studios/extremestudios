@@ -1,0 +1,5 @@
+import { apps } from "@/data/apps";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+export const metadata = { title: "Projects | Extreme Studios" };
+export default function ProjectsPage() { return <><Navbar /><main className="mx-auto max-w-6xl px-5 pb-20 pt-36 md:px-8"><p className="eyebrow">Projects</p><h1 className="mt-5 text-4xl font-medium text-white md:text-6xl">Portfolio produk digital.</h1><p className="mt-6 max-w-2xl leading-7 text-slate-400">Koleksi project Extreme Studios untuk komunitas, kreator, pendidikan, dan kebutuhan bisnis. Bunda Sehati tidak ditampilkan dalam portfolio ini.</p><div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{apps.map((app) => <a key={app.slug} href={`/projects/${app.slug}`} className="project-card"><div className="project-visual"><img src={app.mockup} alt={`${app.title} mockup`} /></div><div className="p-5"><p className="text-xs font-bold uppercase tracking-wide text-cyan">{app.category}</p><h2 className="mt-2 text-lg font-medium text-white">{app.title}</h2><p className="mt-3 text-sm leading-6 text-slate-400">{app.desc}</p></div></a>)}</div></main><Footer /></>; }

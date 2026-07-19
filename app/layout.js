@@ -1,4 +1,5 @@
 import "./globals.css";
+import AudioFeedback from "@/components/AudioFeedback";
 
 export const metadata = {
   title: "Extreme Studios | AI Engineering & Software Development",
@@ -13,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id">
-      <body>{children}</body>
+      <body><AudioFeedback />{children}</body>
     </html>
   );
 }

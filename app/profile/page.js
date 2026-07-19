@@ -24,8 +24,8 @@ const projects = [
   ["Portal Arek Musik", "Web Platform", "Platform streaming musik untuk band indie mempublikasikan karya dan membangun identitas digital.", "/mockups/portal-arek-musik.png"]
 ];
 
-function CoreVisual({ compact = false }) { return <div className={`profile-core ${compact ? "profile-core--compact" : ""}`} aria-hidden="true"><div className="profile-core__grid" /><div className="profile-core__ring" /><div className="profile-core__cube">ES</div><div className="profile-core__chip">AI<br /><span>ENGINEERING</span></div></div>; }
-function DianaVisual() { return <div className="profile-diana" aria-hidden="true"><div className="profile-diana__orb">D</div><span>CONTEXT</span><i /><i /><i /></div>; }
+function CoreVisual({ compact = false }) { return <div className={`profile-core ${compact ? "profile-core--compact" : ""}`} aria-hidden="true"><div className="profile-core__grid" /><div className="profile-core__ring" /><div className="profile-core__cube"><img src="/generated-ai-core.png" alt="" /></div><div className="profile-core__chip">AI<br /><span>ENGINEERING</span></div></div>; }
+function DianaVisual() { return <div className="profile-diana"><img src="/generated-diana-ai.png" alt="Visual DIANA Smart Assistant AI" /></div>; }
 
 export const metadata = { title: "Profile | Extreme Studios", description: "Company profile Extreme Studios: AI Engineering & Software Development." };
 

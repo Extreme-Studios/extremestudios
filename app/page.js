@@ -1,21 +1,23 @@
 import Contact from "@/components/Contact";
-import Featured from "@/components/Featured";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import OtherProjects from "@/components/OtherProjects";
-import Philosophy from "@/components/Philosophy";
-import Positioning from "@/components/Positioning";
+import Training from "@/components/Training";
+import Services from "@/components/Services";
+import About from "@/components/About";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
-      <Featured />
+      <Training />
+      <Services />
       <OtherProjects />
-      <Positioning />
-      <Philosophy />
+      <About />
       <Contact />
+      <Footer />
     </main>
   );
 }

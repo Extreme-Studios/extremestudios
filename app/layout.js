@@ -1,11 +1,11 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Extreme Studios | Digital Product Ecosystem",
-  description: "Portfolio produk digital untuk UMKM, kreator, komunitas, dan distribusi konten digital.",
+  title: "Extreme Studios | AI Engineering, Android Development & AI Education",
+  description: "Extreme Studios adalah AI Engineering Studio yang menyediakan pengembangan aplikasi Android, solusi AI, dan Pelatihan AI Engineer untuk siswa sekolah.",
   openGraph: {
     title: "Extreme Studios",
-    description: "Build Real Apps for Real Needs",
+    description: "AI Engineering, Android Development & AI Education",
     type: "website"
   }
 };

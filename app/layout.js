@@ -1,11 +1,11 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Extreme Studios | AI Engineering, Android Development & AI Education",
-  description: "Extreme Studios adalah AI Engineering Studio yang menyediakan pengembangan aplikasi Android, solusi AI, dan Pelatihan AI Engineer untuk siswa sekolah.",
+  title: "Extreme Studios | AI Engineering & Software Development",
+  description: "Extreme Studios adalah studio teknologi yang berfokus pada AI Engineering, Software Development, pengembangan aplikasi Android, web application, automation, dan solusi teknologi digital.",
   openGraph: {
     title: "Extreme Studios",
-    description: "AI Engineering, Android Development & AI Education",
+    description: "AI Engineering & Software Development",
     type: "website"
   }
 };

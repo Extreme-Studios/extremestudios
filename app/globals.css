@@ -391,3 +391,169 @@ body::before {
   .hero-title { font-size: clamp(3.4rem, 18vw, 5rem); }
   .hero-shell::before { inset: 4% 3%; }
 }
+
+/* Professional product studio theme: calm, precise, and intentionally low-noise. */
+:root {
+  color-scheme: light;
+  --ink: #10233f;
+  --muted: #62748c;
+  --cyan: #1d5fd1;
+  --neon: #1d5fd1;
+  --violet: #1d5fd1;
+  --paper: #f7f9fc;
+  --panel: #ffffff;
+}
+
+body,
+.profile-page {
+  background: #f7f9fc;
+  color: var(--ink);
+}
+
+body::before,
+body::after,
+.hero-shell::after,
+.hero-shell::before,
+.hero-scanlines {
+  display: none;
+}
+
+.site-nav {
+  position: absolute;
+  border-bottom: 1px solid rgba(16, 35, 63, .08);
+  background: rgba(255, 255, 255, .90);
+  backdrop-filter: blur(14px);
+}
+
+.brand { color: #10233f; }
+.brand-mark,
+.button-primary {
+  background: #1d5fd1;
+  color: #ffffff;
+  box-shadow: none;
+}
+.brand em { color: #1d5fd1; }
+.nav-link:hover,
+.eyebrow,
+.text-cyan,
+.text-neon,
+.discipline-list article > span,
+.capability-grid b,
+.process-line b,
+.project-facts span,
+.stack-list span { color: #1d5fd1 !important; }
+.nav-link:hover::after { background: #1d5fd1; box-shadow: none; }
+.nav-status { color: #53657d; }
+.nav-status i { background: #2f9e67; box-shadow: 0 0 0 4px rgba(47, 158, 103, .12); }
+
+.hero-shell,
+.profile-hero {
+  min-height: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f7fc 100%);
+}
+.hero-title {
+  color: #10233f;
+  font-size: clamp(3.3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -.065em;
+  line-height: .86;
+}
+.hero-title span { color: #1d5fd1; text-shadow: none; }
+.hero-index { color: #78889d; }
+.hero-subtitle { color: #264665; font-family: inherit; font-weight: 600; }
+.hero-description { color: #62748c; }
+.hero-telemetry span {
+  border-color: #d9e2ee;
+  background: #ffffff;
+  color: #6d7e93;
+  font-family: inherit;
+}
+.hero-telemetry b { color: #1d5fd1; }
+.bg-cyan { background: #1d5fd1; }
+
+.button-primary,
+.button-secondary {
+  border-radius: .45rem;
+  box-shadow: none;
+}
+.button-primary::before { display: none; }
+.button-primary:hover { background: #174fae; }
+.button-secondary {
+  border-color: #c8d5e5;
+  background: #ffffff;
+  color: #1d5fd1;
+}
+.button-secondary:hover { border-color: #1d5fd1; background: #f4f7fc; }
+
+.ai-core { filter: none; min-height: 350px; }
+.ai-grid { opacity: .8; background-image: linear-gradient(rgba(29, 95, 209, .10) 1px, transparent 1px), linear-gradient(90deg, rgba(29, 95, 209, .10) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(circle, #000 8%, transparent 70%); }
+.ai-orbit { border-color: rgba(29, 95, 209, .22); box-shadow: none; }
+.ai-cube {
+  border: 1px solid #b9cce8;
+  background: #eaf1fb;
+  box-shadow: 0 24px 50px rgba(35, 66, 110, .15);
+}
+.ai-panel {
+  border-color: #d6e0ec;
+  background: rgba(255, 255, 255, .94);
+  color: #1d5fd1;
+  box-shadow: 0 14px 28px rgba(35, 66, 110, .10);
+}
+
+.glass,
+.project-card,
+.program-card,
+.diana-feature,
+.profile-program,
+.profile-core,
+.profile-screen,
+.rd-panel,
+.studio-screen {
+  border: 1px solid #e0e7f0;
+  border-radius: .75rem;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(31, 55, 88, .07);
+}
+.project-card { transition: transform .2s ease, box-shadow .2s ease; }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(31, 55, 88, .12); }
+.project-number,
+.tag {
+  border-radius: .3rem;
+  background: #e9f0fb;
+  color: #1d5fd1;
+  box-shadow: none;
+}
+.project-visual,
+.diana-visual,
+.program-visual,
+.profile-diana { background: #edf3fa; }
+.screen-top,
+.profile-screen__top { background: #f8fafc; }
+.screen-code,
+.profile-screen > p,
+.screen-node { color: #1d5fd1; text-shadow: none; }
+
+.profile-section--shade,
+#profile,
+footer {
+  background: #f1f5f9 !important;
+  border-color: #e0e7f0 !important;
+}
+.text-white,
+.text-slate-100,
+.text-slate-200,
+.text-slate-300 { color: #10233f !important; }
+.text-slate-400,
+.text-slate-500 { color: #62748c !important; }
+.border-white\/10,
+.border-white\/20 { border-color: #e0e7f0 !important; }
+.bg-\[\#04101c\],
+.bg-\[\#061524\]\/70,
+.bg-\[\#061321\] { background: #ffffff !important; }
+.profile-core__cube,
+.profile-diana__orb { border-color: #b9cce8; background: #edf3fa; box-shadow: 0 18px 36px rgba(31, 55, 88, .12); color: #1d5fd1; }
+.profile-core__chip { border-color: #d6e0ec; background: #ffffff; color: #1d5fd1; }
+
+@media (max-width: 767px) {
+  .site-nav { background: rgba(255, 255, 255, .96); }
+}

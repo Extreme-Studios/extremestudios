@@ -443,6 +443,7 @@ body::after,
 .project-facts span,
 .stack-list span { color: #1d5fd1 !important; }
 .nav-link:hover::after { background: #1d5fd1; box-shadow: none; }
+.bg-neon { background: #1d5fd1 !important; color: #ffffff !important; }
 .nav-status { color: #53657d; }
 .nav-status i { background: #2f9e67; box-shadow: 0 0 0 4px rgba(47, 158, 103, .12); }
 
@@ -470,6 +471,7 @@ body::after,
 }
 .hero-telemetry b { color: #1d5fd1; }
 .bg-cyan { background: #1d5fd1; }
+.eyebrow::before { background: #1d5fd1; box-shadow: none; }
 
 .button-primary,
 .button-secondary {

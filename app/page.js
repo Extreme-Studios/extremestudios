@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import OtherProjects from "@/components/OtherProjects";
 import About from "@/components/About";
 import Programs from "@/components/Programs";
+import DianaChat from "@/components/DianaChat";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Programs />
       <Contact />
       <Footer />
+      <DianaChat />
     </main>
   );
 }

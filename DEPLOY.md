@@ -21,6 +21,18 @@ git push -u origin main
 
 No Vercel plugin command is required.
 
+## DIANA chat assistant
+
+In Vercel, open `Project Settings -> Environment Variables`, then add these values
+from `.env.example` for Production and Preview:
+
+- `GEMINI_API_KEY` — create it in Google AI Studio.
+- `TELEGRAM_BOT_TOKEN` — token for `@ExtremeStudiosDianaBot`.
+- `TELEGRAM_ADMIN_CHAT_ID` — the Telegram chat ID that receives escalations.
+
+Do not commit real API keys or Telegram tokens. DIANA uses `gemini-2.5-flash-lite`,
+limits replies to ten words, and sends off-topic questions to the configured Telegram admin.
+
 ## Changing `.vercel.app` Subdomain
 
 1. Open project dashboard in Vercel.

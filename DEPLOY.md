@@ -30,7 +30,7 @@ from `.env.example` for Production and Preview:
 - `TELEGRAM_BOT_TOKEN` — token for `@ExtremeStudiosDianaBot`.
 - `TELEGRAM_ADMIN_CHAT_ID` — the Telegram chat ID that receives escalations.
 
-Do not commit real API keys or Telegram tokens. DIANA uses `gemini-2.5-flash-lite`,
+Do not commit real API keys or Telegram tokens. DIANA uses `gemini-3.1-flash-lite`,
 limits replies to ten words, and sends off-topic questions to the configured Telegram admin.
 
 ## Changing `.vercel.app` Subdomain

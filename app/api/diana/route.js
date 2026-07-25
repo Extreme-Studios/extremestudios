@@ -77,7 +77,11 @@ export async function POST(request) {
     );
 
     if (!geminiResponse.ok) {
-      console.error("DIANA Gemini request failed", geminiResponse.status);
+      console.error(
+        "DIANA Gemini request failed",
+        geminiResponse.status,
+        await geminiResponse.text()
+      );
       throw new Error("Gemini request failed");
     }
     const geminiData = await geminiResponse.json();

@@ -184,7 +184,7 @@ a {
 .diana-chat { position:fixed; right:1.25rem; bottom:1.25rem; z-index:60; font-family:inherit; }
 .diana-chat__launcher { position:relative; display:flex; align-items:center; gap:.75rem; min-width:205px; border:1px solid rgba(70,229,246,.5); border-radius:.5rem; padding:.64rem .9rem .64rem .65rem; color:#eefcff; background:rgba(3,19,32,.94); box-shadow:0 18px 45px rgba(0,0,0,.38),0 0 22px rgba(22,223,244,.12); backdrop-filter:blur(16px); text-align:left; transition:transform .2s,border-color .2s; }
 .diana-chat__launcher:hover { transform:translateY(-2px); border-color:#57effc; }
-.diana-chat__launcher-icon,.diana-chat__avatar { display:grid; width:2.25rem; height:2.25rem; place-items:center; border:1px solid rgba(104,240,251,.72); border-radius:50%; color:#54edf9; background:radial-gradient(circle at 35% 30%,#125b70,#06121e 70%); font-weight:900; box-shadow:inset 0 0 12px rgba(38,234,248,.22); }
+.diana-chat__launcher-icon,.diana-chat__avatar { display:block; width:2.25rem; height:2.25rem; flex:0 0 2.25rem; border:1px solid rgba(104,240,251,.72); border-radius:50%; object-fit:cover; object-position:center 25%; background:#10101e; box-shadow:0 0 14px rgba(117,72,242,.38),inset 0 0 12px rgba(38,234,248,.22); }
 .diana-chat__launcher strong,.diana-chat__launcher small,.diana-chat__identity strong,.diana-chat__identity small { display:block; }
 .diana-chat__launcher strong { font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; }.diana-chat__launcher small { margin-top:.16rem; color:#8da9b6; font-size:.66rem; }
 .diana-chat__pulse { position:absolute; top:.42rem; left:2.3rem; width:.42rem; height:.42rem; border-radius:50%; background:#4cf0a2; border:2px solid #071925; }

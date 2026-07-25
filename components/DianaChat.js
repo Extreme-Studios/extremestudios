@@ -51,7 +51,7 @@ export default function DianaChat() {
         <section className="diana-chat__panel" aria-live="polite">
           <header className="diana-chat__header">
             <div className="diana-chat__identity">
-              <span className="diana-chat__avatar">D</span>
+              <img className="diana-chat__avatar" src="/diana-cs-avatar.png" alt="Avatar DIANA" />
               <span><strong>DIANA</strong><small><i /> Online assistant</small></span>
             </div>
             <button type="button" onClick={() => setIsOpen(false)} aria-label="Tutup chat DIANA">×</button>
@@ -90,7 +90,7 @@ export default function DianaChat() {
         aria-expanded={isOpen}
       >
         <span className="diana-chat__pulse" />
-        <span className="diana-chat__launcher-icon">D</span>
+        <img className="diana-chat__launcher-icon" src="/diana-cs-avatar.png" alt="" />
         <span><strong>Tanya DIANA</strong><small>AI assistant</small></span>
       </button>
     </aside>

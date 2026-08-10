@@ -18,6 +18,14 @@ AI dan pembuatan aplikasi Android dengan AI serta Android Studio. Durasi 4 perte
 pertemuan; biaya Rp250.000 per siswa; kuota minimum 5 dan maksimum 10 siswa.
 Layanan Extreme Studios: AI Engineering, Software Development, Android Development, Web
 Application, Automation, Research & Development, dan AI Education.
+AI Engineering mencakup AI Assistant, AI Integration, AI Automation, Intelligent Systems, dan
+Custom AI Solutions. Software Development mencakup custom software, web application, internal
+tools, dan business solutions. Android Development mencakup aplikasi pendidikan, bisnis, dan
+project Android kustom. R&D mencakup eksperimen AI, prototype, teknologi baru, dan project internal.
+Stack yang dipakai di berbagai project: Next.js, React, Tailwind CSS, JavaScript, Electron,
+Pixi.js, Live2D, Kotlin, Jetpack Compose, C++17, Android Room, dan Kotlin Coroutines.
+Cara kerja: ide, eksperimen, engineering, testing, lalu product. Extreme Studios terbuka untuk
+diskusi project, kerja sama, dan kolaborasi teknologi. Kontak Fajar: WhatsApp 0896-7752-3666.
 MEMORI PROJECT WEBSITE:
 ${PROJECT_MEMORY}
 Kontak admin: WhatsApp 0896-7752-3666.
@@ -45,6 +53,24 @@ function getWebsiteAnswer(question) {
   if (value.includes("aiengineer") && /(daftar|pendaftaran)/.test(value)) {
     return "Pendaftaran melalui pihak sekolah atau WhatsApp Extreme Studios.";
   }
+  if (/(layanan|service).*(apa|apaaja|tersedia)|apa.*layanan/.test(value)) {
+    return "Kami melayani AI, software, Android, web, automation, dan R&D.";
+  }
+  if (value.includes("aiengineering")) {
+    return "AI Engineering mencakup AI Assistant, integration, automation, dan intelligent systems.";
+  }
+  if (value.includes("softwaredevelopment")) {
+    return "Software Development mencakup custom software, web app, dan internal tools.";
+  }
+  if (value.includes("androiddevelopment")) {
+    return "Kami membuat aplikasi Android pendidikan, bisnis, dan project kustom.";
+  }
+  if (/(teknologi|techstack|stack)/.test(value)) {
+    return "Kami memakai Next.js, React, Electron, Kotlin, Compose, dan C++17.";
+  }
+  if (/(kontak|whatsapp|hubungi)/.test(value)) {
+    return "Hubungi Fajar melalui WhatsApp 0896-7752-3666.";
+  }
 
   const project = apps.find((app) => value.includes(normalize(app.title)));
   if (project) return project.desc;
@@ -56,7 +82,9 @@ function isWebsiteTopic(question) {
   const keywords = [
     "extremestudios", "diana", "project", "layanan", "service", "program", "event",
     "aiengineer", "software", "android", "web", "automation", "pelatihan", "kelas",
-    "guitarf", "moviehub", "portalarekmusik", "pasarkusidokerto", "cinearena"
+    "guitarf", "moviehub", "portalarekmusik", "pasarkusidokerto", "cinearena",
+    "teknologi", "stack", "electron", "react", "nextjs", "kotlin", "compose", "c17",
+    "kontak", "whatsapp", "hubungi", "profile", "tentang", "kuota", "durasi", "materi"
   ];
   return keywords.some((keyword) => value.includes(keyword)) || apps.some((app) => value.includes(normalize(app.title)));
 }

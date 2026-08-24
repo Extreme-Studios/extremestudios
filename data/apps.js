@@ -119,6 +119,106 @@ export const apps = [
     longDesc:
       "Photography Invoice membantu fotografer mencatat paket foto, pembayaran, status klien, dan laporan sederhana.",
     points: ["Client invoice", "Payment status", "Package data", "Simple report"]
+  },
+  {
+    slug: "ar-wizard-images-unity",
+    title: "AR Wizard Images",
+    category: "Unity AR Prototype",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Prototype Unity untuk pengalaman augmented reality berbasis gambar dan interaksi visual.",
+    longDesc: "AR Wizard Images mengeksplorasi penggunaan Unity untuk pengalaman AR dan visual interaktif.",
+    points: ["Unity", "Image tracking", "AR interaction", "Visual prototype"]
+  },
+  {
+    slug: "bunda-sehati-web",
+    title: "Bunda Sehati Web",
+    category: "Web Platform",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Platform web untuk kebutuhan informasi, galeri, dan layanan digital Bunda Sehati.",
+    longDesc: "Bunda Sehati Web dikembangkan sebagai platform informasi dan layanan digital yang mudah digunakan.",
+    points: ["Web profile", "Information page", "Digital gallery", "Responsive design"]
+  },
+  {
+    slug: "chat-assistant-ai",
+    title: "Chat Assistant AI",
+    category: "AI Assistant",
+    group: "other",
+    mockup: "/generated-diana-ai.png",
+    desc: "Eksplorasi chatbot AI untuk membantu interaksi pengguna dan penyampaian informasi digital.",
+    longDesc: "Chat Assistant AI menjadi bagian dari eksperimen Extreme Studios dalam membangun asisten percakapan.",
+    points: ["AI chat", "Context response", "Assistant workflow", "User interaction"]
+  },
+  {
+    slug: "dna-codex",
+    title: "DNA Codex",
+    category: "AI Engineering Tool",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Tool engineering untuk membantu pengembangan, analisis, dan otomasi workflow berbasis AI.",
+    longDesc: "DNA Codex merupakan project internal untuk mengeksplorasi engineering workflow dan sistem AI.",
+    points: ["AI workflow", "Engineering tool", "Automation", "Developer support"]
+  },
+  {
+    slug: "extreme-studios-guitar-fx-desktop",
+    title: "Extreme Studios Guitar FX Desktop",
+    category: "Desktop Audio Technology",
+    group: "other",
+    mockup: "/featured/guitar-fx.png",
+    desc: "Eksplorasi aplikasi desktop audio untuk kebutuhan efek gitar dan pemrosesan suara.",
+    longDesc: "Project desktop Guitar FX memperluas eksperimen audio Extreme Studios di luar platform Android.",
+    points: ["Audio processing", "Guitar effects", "Desktop app", "Sound workflow"]
+  },
+  {
+    slug: "magic-images-desktop",
+    title: "Magic Images Desktop",
+    category: "Desktop Image Tool",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Aplikasi desktop untuk mengeksplorasi pengelolaan dan pemrosesan gambar secara praktis.",
+    longDesc: "Magic Images Desktop adalah project eksperimen untuk workflow gambar dan utilitas kreatif.",
+    points: ["Image processing", "Desktop utility", "Creative workflow", "Export tool"]
+  },
+  {
+    slug: "my-cli",
+    title: "My CLI",
+    category: "Developer Tool",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Command-line tool untuk membantu otomasi dan workflow pengembangan project.",
+    longDesc: "My CLI dibuat sebagai utilitas developer untuk menjalankan pekerjaan engineering dengan lebih efisien.",
+    points: ["CLI workflow", "Automation", "Developer utility", "Project commands"]
+  },
+  {
+    slug: "the-lyric-chords",
+    title: "The Lyric Chords",
+    category: "Music Technology",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Aplikasi musik untuk membantu analisis audio, lirik, dan chord secara digital.",
+    longDesc: "The Lyric Chords mengeksplorasi pemrosesan audio dan bantuan AI untuk workflow musik.",
+    points: ["Audio analysis", "Lyrics", "Chord detection", "Music workflow"]
+  },
+  {
+    slug: "web-parfi-jatim",
+    title: "Web PARFI Jatim",
+    category: "Web Platform",
+    group: "other",
+    mockup: "/mockups/cinema-parfi-jatim.png",
+    desc: "Website platform untuk informasi, karya, dan ekosistem perfilman PARFI Jawa Timur.",
+    longDesc: "Web PARFI Jatim menjadi ruang digital untuk menampilkan informasi dan karya perfilman daerah.",
+    points: ["Organization profile", "Film information", "Content showcase", "Responsive web"]
+  },
+  {
+    slug: "web-store-chat-assistant",
+    title: "Web Store + Chat Assistant",
+    category: "Marketplace & AI Chat",
+    group: "other",
+    mockup: "/mockups/pasarku-sidokerto.png",
+    desc: "Web store dengan katalog produk dan chatbot untuk membantu pengunjung mendapatkan informasi.",
+    longDesc: "Project ini menggabungkan pengalaman marketplace dengan asisten chat untuk mendukung customer.",
+    points: ["Product catalog", "Web store", "AI chatbot", "Customer support"]
   }
 ];
 

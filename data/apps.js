@@ -26,7 +26,7 @@ export const apps = [
     title: "Cinema Parfi Jatim",
     category: "Indie Film Streaming",
     group: "featured",
-    mockup: "/mockups/cinema-parfi-jatim.png",
+    mockup: "/project-mockups/streaming-platform.png",
     desc: "Platform streaming film indie dan short movie untuk distribusi karya sineas lokal.",
     longDesc:
       "Cinema Parfi Jatim menampilkan film indie, short movie, dan trailer dalam format katalog streaming yang lebih profesional.",

@@ -4,7 +4,7 @@ export const apps = [
     title: "Portal Arek Musik",
     category: "Indie Music Platform",
     group: "featured",
-    mockup: "/mockups/portal-arek-musik.png",
+    mockup: "/project-mockups/creative-tools.png",
     desc: "Platform streaming musik untuk band indie agar karya mereka bisa dipublikasikan dan didengar lebih luas.",
     longDesc:
       "Portal Arek Musik dibuat sebagai tempat band indie memamerkan lagu, memperluas jangkauan pendengar, dan membangun identitas musik lokal secara digital.",
@@ -15,7 +15,7 @@ export const apps = [
     title: "Pasarku Sidokerto",
     category: "UMKM Catalog",
     group: "featured",
-    mockup: "/mockups/pasarku-sidokerto.png",
+    mockup: "/project-mockups/web-platform.png",
     desc: "Aplikasi katalog digital untuk pedagang UMKM agar bisa menampilkan produk dan melayani pembelian dengan lebih praktis.",
     longDesc:
       "Pasarku Sidokerto membantu pedagang lokal punya etalase digital yang rapi, mudah dibuka, dan siap diarahkan ke kontak pembelian.",
@@ -37,7 +37,7 @@ export const apps = [
     title: "Cine Arena",
     category: "Student Film Platform",
     group: "featured",
-    mockup: "/mockups/cine-arena.png",
+    mockup: "/project-mockups/streaming-platform.png",
     desc: "Platform streaming film khusus pelajar untuk menampilkan dan mengembangkan karya film siswa.",
     longDesc:
       "Cine Arena menjadi ruang presentasi karya film pelajar dengan visual yang tetap clean, modern, dan tidak terasa seperti tugas sekolah.",
@@ -48,7 +48,7 @@ export const apps = [
     title: "Lazis NU Sidokerto TV",
     category: "Dakwah Streaming",
     group: "other",
-    mockup: "/mockups/lazis-nu-sidokerto-tv.png",
+    mockup: "/project-mockups/web-platform.png",
     desc: "Platform video dakwah berbasis streaming untuk dokumentasi dan distribusi kegiatan keagamaan.",
     longDesc:
       "Aplikasi dakwah Islam berisi video kegiatan, kajian, dan dokumentasi organisasi agar bisa disaksikan online.",
@@ -59,7 +59,7 @@ export const apps = [
     title: "GRII Sidoarjo",
     category: "Church Streaming",
     group: "other",
-    mockup: "/mockups/grii-sidoarjo.png",
+    mockup: "/project-mockups/streaming-platform.png",
     desc: "Aplikasi streaming ibadah dan kegiatan gereja untuk akses online jemaat.",
     longDesc:
       "GRII Sidoarjo membantu jemaat mengikuti ibadah, kegiatan gereja, dan live streaming ketika berhalangan hadir.",
@@ -81,7 +81,7 @@ export const apps = [
     title: "Extreme Studios HUB",
     category: "Private App Store",
     group: "other",
-    mockup: "/mockups/extreme-studios-hub.png",
+    mockup: "/project-mockups/ai-engineering.png",
     desc: "Platform distribusi aplikasi untuk mengelola dan menyediakan semua produk software dalam satu tempat.",
     longDesc:
       "Extreme Studios HUB menjadi katalog pusat untuk APK dan software PC buatan sendiri agar user punya satu tempat download yang jelas.",
@@ -92,7 +92,7 @@ export const apps = [
     title: "Auto Cut Video",
     category: "Desktop Automation",
     group: "other",
-    mockup: "/mockups/auto-cut-video.png",
+    mockup: "/project-mockups/creative-tools.png",
     desc: "Software desktop untuk memotong video secara otomatis menjadi highlight dan mengekspor XML untuk editing lanjutan.",
     longDesc:
       "Auto Cut Video mempercepat workflow editor dengan deteksi potongan highlight dan export XML untuk proses lanjut di Adobe Premiere.",
@@ -103,7 +103,7 @@ export const apps = [
     title: "Pas Photo Layout",
     category: "Photography Tool",
     group: "other",
-    mockup: "/mockups/pas-photo-layout.png",
+    mockup: "/project-mockups/creative-tools.png",
     desc: "Aplikasi untuk menyusun banyak foto secara otomatis dalam satu layout cetak.",
     longDesc:
       "Pas Photo Layout membantu fotografer menyusun banyak pas foto ke satu kertas tanpa mengatur manual berulang-ulang.",
@@ -114,7 +114,7 @@ export const apps = [
     title: "Photography Invoice",
     category: "Invoice Utility",
     group: "other",
-    mockup: "/mockups/photography-invoice.png",
+    mockup: "/project-mockups/web-platform.png",
     desc: "Aplikasi invoice sederhana untuk membantu fotografer mencatat pembayaran klien.",
     longDesc:
       "Photography Invoice membantu fotografer mencatat paket foto, pembayaran, status klien, dan laporan sederhana.",
@@ -205,7 +205,7 @@ export const apps = [
     title: "Web PARFI Jatim",
     category: "Web Platform",
     group: "other",
-    mockup: "/mockups/cinema-parfi-jatim.png",
+    mockup: "/project-mockups/streaming-platform.png",
     desc: "Website platform untuk informasi, karya, dan ekosistem perfilman PARFI Jawa Timur.",
     longDesc: "Web PARFI Jatim menjadi ruang digital untuk menampilkan informasi dan karya perfilman daerah.",
     points: ["Organization profile", "Film information", "Content showcase", "Responsive web"]
@@ -215,7 +215,7 @@ export const apps = [
     title: "Web Store + Chat Assistant",
     category: "Marketplace & AI Chat",
     group: "other",
-    mockup: "/mockups/pasarku-sidokerto.png",
+    mockup: "/project-mockups/web-platform.png",
     desc: "Web store dengan katalog produk dan chatbot untuk membantu pengunjung mendapatkan informasi.",
     longDesc: "Project ini menggabungkan pengalaman marketplace dengan asisten chat untuk mendukung customer.",
     points: ["Product catalog", "Web store", "AI chatbot", "Customer support"]

@@ -70,7 +70,7 @@ export const apps = [
     title: "MUGARU TV",
     category: "Streaming Platform",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/web-platform.png",
     desc: "Platform TV digital untuk menampilkan konten video dan siaran dalam pengalaman streaming yang rapi.",
     longDesc:
       "MUGARU TV dikembangkan sebagai platform streaming untuk mengelola dan menyajikan konten video secara digital.",
@@ -125,7 +125,7 @@ export const apps = [
     title: "AR Wizard Images",
     category: "Unity AR Prototype",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/creative-tools.png",
     desc: "Prototype Unity untuk pengalaman augmented reality berbasis gambar dan interaksi visual.",
     longDesc: "AR Wizard Images mengeksplorasi penggunaan Unity untuk pengalaman AR dan visual interaktif.",
     points: ["Unity", "Image tracking", "AR interaction", "Visual prototype"]
@@ -135,7 +135,7 @@ export const apps = [
     title: "Bunda Sehati Web",
     category: "Web Platform",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/web-platform.png",
     desc: "Platform web untuk kebutuhan informasi, galeri, dan layanan digital Bunda Sehati.",
     longDesc: "Bunda Sehati Web dikembangkan sebagai platform informasi dan layanan digital yang mudah digunakan.",
     points: ["Web profile", "Information page", "Digital gallery", "Responsive design"]
@@ -145,7 +145,7 @@ export const apps = [
     title: "Chat Assistant AI",
     category: "AI Assistant",
     group: "other",
-    mockup: "/generated-diana-ai.png",
+    mockup: "/project-mockups/ai-engineering.png",
     desc: "Eksplorasi chatbot AI untuk membantu interaksi pengguna dan penyampaian informasi digital.",
     longDesc: "Chat Assistant AI menjadi bagian dari eksperimen Extreme Studios dalam membangun asisten percakapan.",
     points: ["AI chat", "Context response", "Assistant workflow", "User interaction"]
@@ -155,7 +155,7 @@ export const apps = [
     title: "DNA Codex",
     category: "AI Engineering Tool",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/ai-engineering.png",
     desc: "Tool engineering untuk membantu pengembangan, analisis, dan otomasi workflow berbasis AI.",
     longDesc: "DNA Codex merupakan project internal untuk mengeksplorasi engineering workflow dan sistem AI.",
     points: ["AI workflow", "Engineering tool", "Automation", "Developer support"]
@@ -175,7 +175,7 @@ export const apps = [
     title: "Magic Images Desktop",
     category: "Desktop Image Tool",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/creative-tools.png",
     desc: "Aplikasi desktop untuk mengeksplorasi pengelolaan dan pemrosesan gambar secara praktis.",
     longDesc: "Magic Images Desktop adalah project eksperimen untuk workflow gambar dan utilitas kreatif.",
     points: ["Image processing", "Desktop utility", "Creative workflow", "Export tool"]
@@ -185,7 +185,7 @@ export const apps = [
     title: "My CLI",
     category: "Developer Tool",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/ai-engineering.png",
     desc: "Command-line tool untuk membantu otomasi dan workflow pengembangan project.",
     longDesc: "My CLI dibuat sebagai utilitas developer untuk menjalankan pekerjaan engineering dengan lebih efisien.",
     points: ["CLI workflow", "Automation", "Developer utility", "Project commands"]
@@ -195,7 +195,7 @@ export const apps = [
     title: "The Lyric Chords",
     category: "Music Technology",
     group: "other",
-    mockup: "/generated-ai-core.png",
+    mockup: "/project-mockups/creative-tools.png",
     desc: "Aplikasi musik untuk membantu analisis audio, lirik, dan chord secara digital.",
     longDesc: "The Lyric Chords mengeksplorasi pemrosesan audio dan bantuan AI untuk workflow musik.",
     points: ["Audio analysis", "Lyrics", "Chord detection", "Music workflow"]

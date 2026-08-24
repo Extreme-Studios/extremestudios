@@ -18,6 +18,10 @@ AI dan pembuatan aplikasi Android dengan AI serta Android Studio. Durasi 4 perte
 pertemuan; biaya Rp250.000 per siswa; kuota minimum 5 dan maksimum 10 siswa.
 Layanan Extreme Studios: AI Engineering, Software Development, Android Development, Web
 Application, Automation, Research & Development, dan AI Education.
+Web Builder Extreme Studios: pembuatan website interactive, marketplace, web chatbot, landing
+page, company profile, dan kebutuhan website bisnis lainnya. Harga mulai Rp1.000.000, sudah
+termasuk domain, dengan biaya tahunan terjangkau. Customer dapat bertanya ke DIANA untuk detail
+paket dan rekomendasi solusi.
 AI Engineering mencakup AI Assistant, AI Integration, AI Automation, Intelligent Systems, dan
 Custom AI Solutions. Software Development mencakup custom software, web application, internal
 tools, dan business solutions. Android Development mencakup aplikasi pendidikan, bisnis, dan
@@ -54,7 +58,13 @@ function getWebsiteAnswer(question) {
     return "Pendaftaran melalui pihak sekolah atau WhatsApp Extreme Studios.";
   }
   if (/(layanan|service).*(apa|apaaja|tersedia)|apa.*layanan/.test(value)) {
-    return "Kami melayani AI, software, Android, web, automation, dan R&D.";
+    return "Kami melayani AI, web builder, software, Android, automation, dan R&D.";
+  }
+  if (/(webbuilder|buatwebsite|jasabuatwebsite|pembuatanwebsite|websitebisnis)/.test(value)) {
+    return "Web Builder mulai Rp1 juta, termasuk domain dan biaya tahunan terjangkau.";
+  }
+  if (/(marketplace|landingpage|webchatbot|websiteinteractive|companyprofile)/.test(value)) {
+    return "Kami membuat marketplace, landing page, web chatbot, dan website interactive.";
   }
   if (value.includes("aiengineering")) {
     return "AI Engineering mencakup AI Assistant, integration, automation, dan intelligent systems.";

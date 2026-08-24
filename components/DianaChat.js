@@ -46,7 +46,7 @@ export default function DianaChat() {
   }
 
   return (
-    <aside className={`diana-chat ${isOpen ? "diana-chat--open" : ""}`} aria-label="Chat dengan DIANA">
+    <aside id="diana" className={`diana-chat ${isOpen ? "diana-chat--open" : ""}`} aria-label="Chat dengan DIANA">
       {isOpen && (
         <section className="diana-chat__panel" aria-live="polite">
           <header className="diana-chat__header">

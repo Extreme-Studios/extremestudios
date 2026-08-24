@@ -66,6 +66,17 @@ export const apps = [
     points: ["Live service", "Worship video", "Event archive", "Online access"]
   },
   {
+    slug: "mugaru-tv",
+    title: "MUGARU TV",
+    category: "Streaming Platform",
+    group: "other",
+    mockup: "/generated-ai-core.png",
+    desc: "Platform TV digital untuk menampilkan konten video dan siaran dalam pengalaman streaming yang rapi.",
+    longDesc:
+      "MUGARU TV dikembangkan sebagai platform streaming untuk mengelola dan menyajikan konten video secara digital.",
+    points: ["Video catalog", "Streaming content", "Channel experience", "Watch page"]
+  },
+  {
     slug: "extreme-studios-hub",
     title: "Extreme Studios HUB",
     category: "Private App Store",

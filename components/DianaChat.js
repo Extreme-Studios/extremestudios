@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DianaChat({ vertical = "" }) {
   const isMua = vertical === "mua";
@@ -9,6 +9,14 @@ export default function DianaChat({ vertical = "" }) {
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const orderUrl = "https://wa.me/6289677523666?text=Halo%20Extreme%20Studios,%20saya%20berminat%20order%20Website%20MUA%20%2B%20AI%20Assistant.";
+
+  useEffect(() => {
+    function openFromCta(event) {
+      if (!event.detail || event.detail === vertical) setIsOpen(true);
+    }
+    window.addEventListener("open-diana", openFromCta);
+    return () => window.removeEventListener("open-diana", openFromCta);
+  }, [vertical]);
   const inputRef = useRef(null);
 
   async function sendMessage(event) {

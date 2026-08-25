@@ -23,7 +23,7 @@ const packages = [
 export default function MuaDemoSite() {
   const [booked, setBooked] = useState(false);
   const [selected, setSelected] = useState(packages[1][0]);
-  return <main className="demo-mua"><DianaChat vertical="mua" />
+  return <main className="demo-mua"><DianaChat vertical="mua" displayName="Chat Assistant" />
     <div className="demo-mua__demo-bar"><span>WEBSITE DEMO</span><a href="/mua">Ingin website seperti ini? Lihat paket Extreme Studios →</a></div>
     <header className="demo-mua__nav"><a href="#demo-home" className="demo-mua__logo"><i>L</i><span>LUMINA<small>MAKEUP ARTIST</small></span></a><nav><a href="#demo-about">Tentang</a><a href="#demo-portfolio">Portfolio</a><a href="#demo-packages">Paket</a><a href="#demo-booking">Booking</a></nav><a href="#demo-booking" className="demo-mua__nav-cta">Cek ketersediaan</a></header>
     <section id="demo-home" className="demo-mua__hero"><div className="demo-mua__hero-copy"><p className="demo-mua__eyebrow">MAKEUP FOR YOUR MOMENT</p><h1>Make your beauty<br /><em>more meaningful.</em></h1><p>Riasan yang terasa seperti diri kamu sendiri—lebih percaya diri, lebih bersinar, dan siap menyimpan momen selamanya.</p><div><a href="#demo-packages" className="demo-mua__button">Lihat paket <b>→</b></a><a href="#demo-portfolio" className="demo-mua__text-link">Lihat portfolio</a></div></div><div className="demo-mua__hero-art"><div className="demo-mua__portrait"><span>BRIDAL<br /><i>beauty</i></span></div><div className="demo-mua__hero-note"><small>AVAILABLE FOR</small><b>2026 BRIDES</b><span>Surabaya · Sidoarjo · Jawa Timur</span></div><div className="demo-mua__hero-stamp">L<br /><small>LM</small></div></div></section>

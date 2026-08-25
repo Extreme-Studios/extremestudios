@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function DianaChat({ vertical = "" }) {
+export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
   const isMua = vertical === "mua";
+  const assistantName = displayName || "DIANA";
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([{ role: "diana", text: isMua ? "Halo Kak, saya Diana. Mau tahu harga dan cara order Website MUA?" : "Halo, saya DIANA. Ada yang ingin ditanyakan?" }]);
+  const [messages, setMessages] = useState([{ role: "diana", text: isMua ? `Halo Kak, saya ${assistantName}. Mau tahu harga dan cara order Website MUA?` : `Halo, saya ${assistantName}. Ada yang ingin ditanyakan?` }]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const orderUrl = "https://wa.me/6289677523666?text=Halo%20Extreme%20Studios,%20saya%20berminat%20order%20Website%20MUA%20%2B%20AI%20Assistant.";
@@ -44,7 +45,7 @@ export default function DianaChat({ vertical = "" }) {
     } catch {
       setMessages((current) => [
         ...current,
-        { role: "diana", text: "Koneksi DIANA sedang tidak tersedia." }
+        { role: "diana", text: `Koneksi ${assistantName} sedang tidak tersedia.` }
       ]);
     } finally {
       setIsSending(false);
@@ -53,13 +54,13 @@ export default function DianaChat({ vertical = "" }) {
   }
 
   return (
-    <aside id="diana" className={`diana-chat ${isMua ? "diana-chat--mua" : ""} ${isOpen ? "diana-chat--open" : ""}`} aria-label="Chat dengan DIANA">
+    <aside id="diana" className={`diana-chat ${isMua ? "diana-chat--mua" : ""} ${isOpen ? "diana-chat--open" : ""}`} aria-label={`Chat dengan ${assistantName}`}>
       {isOpen && (
         <section className="diana-chat__panel" aria-live="polite">
           <header className="diana-chat__header">
             <div className="diana-chat__identity">
-              <img className="diana-chat__avatar" src="/diana-cs-avatar.png" alt="Avatar DIANA" />
-              <span><strong>DIANA</strong><small><i /> Online assistant</small></span>
+              <img className="diana-chat__avatar" src="/diana-cs-avatar.png" alt={`Avatar ${assistantName}`} />
+              <span><strong>{assistantName}</strong><small><i /> Online assistant</small></span>
             </div>
             <button type="button" onClick={() => setIsOpen(false)} aria-label="Tutup chat DIANA">×</button>
           </header>
@@ -71,7 +72,7 @@ export default function DianaChat({ vertical = "" }) {
             {messages.map((message, index) => (
               <div className={`diana-chat__message-wrap diana-chat__message-wrap--${message.role}`} key={`${message.role}-${index}`}><p className={`diana-chat__message diana-chat__message--${message.role}`}>{message.text}</p>{message.action === "order" && <a className="diana-chat__order" href={orderUrl} target="_blank" rel="noreferrer">Order via WhatsApp <b>↗</b></a>}</div>
             ))}
-            {isSending && <p className="diana-chat__typing">DIANA sedang mengetik<span>...</span></p>}
+            {isSending && <p className="diana-chat__typing">{assistantName} sedang mengetik<span>...</span></p>}
           </div>
           <form className="diana-chat__form" onSubmit={sendMessage}>
             <label className="sr-only" htmlFor="diana-message">Pesan untuk DIANA</label>
@@ -96,7 +97,7 @@ export default function DianaChat({ vertical = "" }) {
       >
         <span className="diana-chat__pulse" />
         <img className="diana-chat__launcher-icon" src="/diana-cs-avatar.png" alt="" />
-        <span><strong>Tanya DIANA</strong><small>AI assistant</small></span>
+        <span><strong>{assistantName}</strong><small>AI assistant</small></span>
       </button>
     </aside>
   );

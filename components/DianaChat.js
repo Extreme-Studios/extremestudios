@@ -7,7 +7,7 @@ const welcomeMessage = {
   text: "Halo, saya DIANA. Ada yang ingin ditanyakan?"
 };
 
-export default function DianaChat() {
+export default function DianaChat({ vertical = "" }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([welcomeMessage]);
   const [input, setInput] = useState("");
@@ -27,7 +27,7 @@ export default function DianaChat() {
       const response = await fetch("/api/diana", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: question })
+        body: JSON.stringify({ message: question, vertical })
       });
       const result = await response.json();
       setMessages((current) => [

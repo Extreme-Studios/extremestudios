@@ -13,7 +13,8 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
 
   useEffect(() => {
     function openFromCta(event) {
-      if (!event.detail || event.detail === vertical) setIsOpen(true);
+      const requestedVertical = typeof event.detail === "object" ? event.detail?.vertical : event.detail;
+      if (!requestedVertical || requestedVertical === vertical) setIsOpen(true);
     }
     window.addEventListener("open-diana", openFromCta);
     return () => window.removeEventListener("open-diana", openFromCta);

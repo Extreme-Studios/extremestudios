@@ -177,7 +177,7 @@ export async function POST(request) {
     }
 
     const verticalContext = `Produk: ${vertical.productName}. Harga promo: ${vertical.price}. ${vertical.badge}. Fitur: ${vertical.features.map(([, title]) => title).join(", ")}. Demo service: ${vertical.demoServices.join(", ")}. Paket demo: ${vertical.demoPackages.map((item) => `${item.name} ${item.price}`).join(", ")}. FAQ: ${vertical.faq.map(([q, a]) => `${q}: ${a}`).join(" ")}.`;
-    const prompt = `${vertical.chatbotPrompt}\n\n${verticalContext}\n\nAturan:\n- Jawab hanya seputar Website MUA + AI Assistant Extreme Studios.\n- Pahami bahasa Indonesia santai dan typo.\n- Jangan menyuruh visitor menghubungi WhatsApp untuk pertanyaan awal.\n- Jika diminta order/pembayaran, arahkan: \"Mulai order dengan mengisi kebutuhan melalui Diana; detail pembayaran dibuka setelah order siap.\"\n- Jawaban maksimal 32 kata, tanpa emoji.\n- Keluarkan JSON murni: {"answer":"..."}.\n\nPertanyaan: ${question}`;
+    const prompt = `${vertical.chatbotPrompt}\n\n${verticalContext}\n\nAturan:\n- Jawab hanya seputar Website MUA + AI Assistant Extreme Studios.\n- Pahami bahasa Indonesia santai dan typo.\n- Jangan menyuruh visitor menghubungi WhatsApp untuk pertanyaan awal.\n- Jika diminta order/pembayaran, arahkan: \"Mulai order dengan mengisi kebutuhan melalui Diana; detail pembayaran dibuka setelah order siap.\"\n- Jika pertanyaan meminta detail yang tidak ada di knowledge, isi answer dengan: \"Untuk detail informasi tersebut, kami sambungkan ke admin.\" dan set escalate true.\n- Jawaban maksimal 32 kata, tanpa emoji.\n- Keluarkan JSON murni: {"answer":"...","escalate":false}.\n\nPertanyaan: ${question}`;
     try {
       const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${apiKey}`, {
         method: "POST",
@@ -188,6 +188,10 @@ export async function POST(request) {
       const geminiData = await geminiResponse.json();
       const rawText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
       const decision = JSON.parse(rawText || "{}");
+      if (decision.escalate) {
+        await notifyAdmin(question);
+        return NextResponse.json({ answer: "Untuk detail informasi tersebut, kami sambungkan ke admin." });
+      }
       return NextResponse.json({ answer: limitWords(decision.answer || "Diana dapat menjelaskan paket Website MUA dan demo booking.", 32) });
     } catch {
       return NextResponse.json({ answer: "Diana dapat menjelaskan harga, fitur, booking, kalender, dan proses Website MUA." });

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.diana-chat__message-wrap { display:flex; max-width:85%; flex-direction:column; gap:.4rem; }.diana-chat__message-wrap--visitor { align-self:flex-end; align-items:flex-end; }.diana-chat__message-wrap .diana-chat__message { max-width:100%; }.diana-chat__order { display:inline-flex; align-items:center; gap:.4rem; border-radius:.45rem; padding:.5rem .65rem; color:#fff; background:#087f92; font-size:.68rem; font-weight:800; }.diana-chat__order:hover { background:#0aa5b9; }.diana-chat--mua .diana-chat__order { color:#fffaf5; background:#80564a; }.diana-chat--mua .diana-chat__order:hover { background:#613e34; }
+
 .diana-chat--mua .diana-chat__launcher { border-color:rgba(148,91,76,.45); color:#55352b; background:rgba(255,247,242,.96); box-shadow:0 18px 45px rgba(92,54,42,.24),0 0 22px rgba(183,112,98,.13); }
 .diana-chat--mua .diana-chat__launcher:hover { border-color:#a7695d; }
 .diana-chat--mua .diana-chat__launcher small { color:#977a6e; }

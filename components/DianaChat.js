@@ -8,6 +8,7 @@ export default function DianaChat({ vertical = "" }) {
   const [messages, setMessages] = useState([{ role: "diana", text: isMua ? "Halo Kak, saya Diana. Mau tahu harga dan cara order Website MUA?" : "Halo, saya DIANA. Ada yang ingin ditanyakan?" }]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const orderUrl = "https://wa.me/6289677523666?text=Halo%20Extreme%20Studios,%20saya%20berminat%20order%20Website%20MUA%20%2B%20AI%20Assistant.";
   const inputRef = useRef(null);
 
   async function sendMessage(event) {
@@ -18,6 +19,7 @@ export default function DianaChat({ vertical = "" }) {
     setMessages((current) => [...current, { role: "visitor", text: question }]);
     setInput("");
     setIsSending(true);
+    const questionCount = messages.filter((message) => message.role === "visitor").length + 1;
 
     try {
       const response = await fetch("/api/diana", {
@@ -26,10 +28,11 @@ export default function DianaChat({ vertical = "" }) {
         body: JSON.stringify({ message: question, vertical })
       });
       const result = await response.json();
-      setMessages((current) => [
-        ...current,
-        { role: "diana", text: result.answer || "Maaf, DIANA belum bisa menjawab." }
-      ]);
+      setMessages((current) => {
+        const next = [...current, { role: "diana", text: result.answer || "Maaf, DIANA belum bisa menjawab." }];
+        if (isMua && questionCount === 3) next.push({ role: "diana", text: "Kalau Kakak berminat, silakan klik tombol order. Kalau masih ingin bertanya, lanjutkan chat di sini.", action: "order" });
+        return next;
+      });
     } catch {
       setMessages((current) => [
         ...current,
@@ -58,9 +61,7 @@ export default function DianaChat({ vertical = "" }) {
           </div>
           <div className="diana-chat__messages">
             {messages.map((message, index) => (
-              <p className={`diana-chat__message diana-chat__message--${message.role}`} key={`${message.role}-${index}`}>
-                {message.text}
-              </p>
+              <div className={`diana-chat__message-wrap diana-chat__message-wrap--${message.role}`} key={`${message.role}-${index}`}><p className={`diana-chat__message diana-chat__message--${message.role}`}>{message.text}</p>{message.action === "order" && <a className="diana-chat__order" href={orderUrl} target="_blank" rel="noreferrer">Order via WhatsApp <b>↗</b></a>}</div>
             ))}
             {isSending && <p className="diana-chat__typing">DIANA sedang mengetik<span>...</span></p>}
           </div>

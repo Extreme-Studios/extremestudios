@@ -4,15 +4,15 @@ import { useState } from "react";
 import DianaChat from "@/components/DianaChat";
 
 const looks = [
-  ["Soft Glam", "Natural glow", "/demo-mua/makeup-session.png"],
-  ["Classic Bride", "Timeless elegance", "/demo-mua/bridal-fashion.png"],
-  ["Modern Hijab", "Clean & graceful", "/demo-mua/bridal-fashion.png"],
-  ["Garden Party", "Fresh romantic", "/demo-mua/wedding-decor.png"]
+  ["Paes Ageng", "Rias pengantin Jawa yang anggun", "/demo-mua/makeup-session.png"],
+  ["Kebaya Akad", "Elegan, hangat, dan timeless", "/demo-mua/bridal-fashion.png"],
+  ["Hijab Modern", "Clean, graceful, tetap personal", "/demo-mua/bridal-fashion.png"],
+  ["Pelaminan Joglo", "Dekorasi lokal yang berkarakter", "/demo-mua/wedding-decor.png"]
 ];
 const gallery = [
-  ["Makeup session", "Bridal prep yang tenang, rapi, dan personal.", "/demo-mua/makeup-session.png", "Proses merias"],
-  ["Bridal wardrobe", "Referensi look, siluet, dan detail untuk hari spesial.", "/demo-mua/bridal-fashion.png", "Baju pernikahan"],
-  ["Wedding décor", "Inspirasi dekorasi yang menyatu dengan mood acara kamu.", "/demo-mua/wedding-decor.png", "Pilihan dekorasi"]
+  ["Rias Paes Jawa", "Proses makeup pengantin yang tenang, rapi, dan personal.", "/demo-mua/makeup-session.png", "Proses merias"],
+  ["Koleksi Kebaya & Gaun", "Pilihan kebaya, gaun, dan look bridal yang lebih beragam.", "/demo-mua/bridal-fashion.png", "Baju pernikahan"],
+  ["Pelaminan Jawa", "Inspirasi gebyok, janur, bunga, dan dekorasi lokal.", "/demo-mua/wedding-decor.png", "Pilihan dekorasi"]
 ];
 const packages = [
   ["The Intimate", "Rp1.250.000", "Makeup akad + hijab styling"],

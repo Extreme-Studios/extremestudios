@@ -291,6 +291,17 @@ a {
 @media(max-width:850px){.mua-hero__grid,.mua-visual-grid,.mua-booking-demo,.mua-calendar-card{grid-template-columns:1fr}.mua-hero__visual{min-height:395px;max-width:600px;width:90%;margin:auto}.mua-device{inset:1rem 0 0 0}.mua-feature-grid{grid-template-columns:repeat(2,1fr)}.mua-price-card{grid-template-columns:1fr}.mua-price-card__right{min-width:0}.mua-booking-demo__aside{padding:1.8rem}.mua-booking-demo__progress{grid-template-columns:repeat(4,1fr)}.mua-booking-demo__progress span{display:grid;gap:.25rem}.mua-booking-demo__progress i{font-size:.58rem}.mua-booking-demo__aside p{display:none}}
 @media(max-width:560px){.mua-wrap{width:min(100% - 1.5rem,1120px)}.mua-hero{padding-top:7rem}.mua-hero h1{font-size:3.1rem}.mua-hero__visual{min-height:320px;width:100%}.mua-device{transform:none}.mua-device__screen{min-height:285px;padding:.75rem}.mua-device__cover{height:145px}.mua-device__cover span{font-size:1.4rem}.mua-mini-chat{right:-.25rem;bottom:0}.mua-float-card{left:0;bottom:4rem}.mua-section{padding:4rem 0}.mua-feature-grid,.mua-steps{grid-template-columns:1fr}.mua-stat-row{gap:1rem}.mua-booking-demo__content,.mua-booking-demo__aside,.mua-calendar-card,.mua-price-card{padding:1.3rem}.mua-option-grid,.mua-demo-form{grid-template-columns:1fr}.mua-demo-next{align-items:flex-start;flex-direction:column}.mua-booking-demo__progress{margin-top:1.2rem}.mua-calendar-card{gap:1.8rem}.mua-price-card__right strong{font-size:2.5rem}}
 
+/* Clear package summary for the MUA offer page */
+.mua-package-summary { padding-top:0; }
+.mua-package-summary__card { display:grid; grid-template-columns:.8fr 1.2fr; gap:3rem; align-items:center; border:1px solid rgba(142,88,70,.2); border-radius:1rem; padding:2.4rem; background:linear-gradient(120deg,#f7e4dc,#fffaf6); }
+.mua-package-summary__card h2 { margin:.7rem 0 .6rem; color:#542e24; font-family:Georgia,'Times New Roman',serif; font-size:clamp(2.5rem,5vw,4.4rem); font-weight:500; letter-spacing:-.05em; }
+.mua-package-summary__card .mua-muted { max-width:28rem; margin:0; }
+.mua-package-summary__label { margin:0 0 .9rem; color:#a15f5d; font-size:.68rem; font-weight:900; letter-spacing:.15em; }
+.mua-package-summary__card ul { display:grid; grid-template-columns:repeat(2,1fr); gap:.7rem 1.2rem; margin:0; padding:0; list-style:none; }
+.mua-package-summary__card li { display:flex; gap:.55rem; color:#71564b; font-size:.8rem; line-height:1.4; }
+.mua-package-summary__card li span { color:#a15f5d; font-weight:900; }
+@media(max-width:850px){.mua-package-summary__card{grid-template-columns:1fr;gap:2rem}.mua-package-summary__card ul{grid-template-columns:1fr}}
+
 /* MUA beauty campaign treatment: warm editorial palette based on the supplied reference */
 .mua-page { color:#4b3026; background:#fbf5ef; }
 .mua-page::before { opacity:.18; background-image:radial-gradient(rgba(158,103,83,.18) 1px,transparent 1px); background-size:26px 26px; }

@@ -6,6 +6,15 @@ export const verticalConfigs = {
     price: "Rp1.500.000",
     priceValue: 1500000,
     badge: "Domain .COM 1 Tahun Termasuk",
+    packageIncludes: [
+      "Website profesional sesuai brand MUA",
+      "Portfolio foto, layanan, paket, dan testimoni",
+      "Chat Assistant untuk menjawab pertanyaan calon client",
+      "Form calon pengantin dan alur booking",
+      "Integrasi WhatsApp untuk follow-up",
+      "Tampilan mobile responsive",
+      "Domain .COM gratis untuk 1 tahun"
+    ],
     hero: {
       title: "Website MUA + AI Assistant",
       subtitle: "Calon client bisa tanya, cek layanan dan booking tanpa kamu balas chat satu-satu."

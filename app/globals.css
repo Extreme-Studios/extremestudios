@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+.diana-chat--mua .diana-chat__launcher { border-color:rgba(148,91,76,.45); color:#55352b; background:rgba(255,247,242,.96); box-shadow:0 18px 45px rgba(92,54,42,.24),0 0 22px rgba(183,112,98,.13); }
+.diana-chat--mua .diana-chat__launcher:hover { border-color:#a7695d; }
+.diana-chat--mua .diana-chat__launcher small { color:#977a6e; }
+.diana-chat--mua .diana-chat__pulse { background:#72c993; border-color:#fff4ed; }
+.diana-chat--mua .diana-chat__panel { border-color:rgba(164,101,88,.4); background:linear-gradient(155deg,rgba(255,250,246,.99),rgba(247,232,225,.99)); box-shadow:0 28px 70px rgba(76,43,33,.3),0 0 35px rgba(181,111,96,.12); }
+.diana-chat--mua .diana-chat__header { border-color:rgba(135,84,70,.16); background:linear-gradient(90deg,rgba(214,160,147,.28),transparent); }
+.diana-chat--mua .diana-chat__identity strong { color:#4f2f26; }
+.diana-chat--mua .diana-chat__identity small,.diana-chat--mua .diana-chat__note { color:#96796d; }
+.diana-chat--mua .diana-chat__header button { color:#8f6e62; }
+.diana-chat--mua .diana-chat__intro span { color:#a4625d; }
+.diana-chat--mua .diana-chat__intro p { color:#65463c; }
+.diana-chat--mua .diana-chat__message { border-color:rgba(140,91,77,.16); color:#5a3b31; background:#f3e1d9; }
+.diana-chat--mua .diana-chat__message--visitor { border-color:#bc7a71; color:#fffaf5; background:#80564a; }
+.diana-chat--mua .diana-chat__typing { color:#a27669; }
+.diana-chat--mua .diana-chat__form { border-color:rgba(135,84,70,.16); }
+.diana-chat--mua .diana-chat__form input { border-color:rgba(140,91,77,.25); color:#5e3d32; background:#fffaf6; }
+.diana-chat--mua .diana-chat__form input:focus { border-color:#b36e65; box-shadow:0 0 0 3px rgba(179,110,101,.12); }
+.diana-chat--mua .diana-chat__form button { color:#fffaf5; background:#80564a; }
+
 :root {
   color-scheme: dark;
 }

@@ -2,14 +2,10 @@
 
 import { useRef, useState } from "react";
 
-const welcomeMessage = {
-  role: "diana",
-  text: "Halo, saya DIANA. Ada yang ingin ditanyakan?"
-};
-
 export default function DianaChat({ vertical = "" }) {
+  const isMua = vertical === "mua";
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([welcomeMessage]);
+  const [messages, setMessages] = useState([{ role: "diana", text: isMua ? "Halo Kak, saya Diana. Mau tahu harga dan cara order Website MUA?" : "Halo, saya DIANA. Ada yang ingin ditanyakan?" }]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
   const inputRef = useRef(null);
@@ -46,7 +42,7 @@ export default function DianaChat({ vertical = "" }) {
   }
 
   return (
-    <aside id="diana" className={`diana-chat ${isOpen ? "diana-chat--open" : ""}`} aria-label="Chat dengan DIANA">
+    <aside id="diana" className={`diana-chat ${isMua ? "diana-chat--mua" : ""} ${isOpen ? "diana-chat--open" : ""}`} aria-label="Chat dengan DIANA">
       {isOpen && (
         <section className="diana-chat__panel" aria-live="polite">
           <header className="diana-chat__header">
@@ -58,7 +54,7 @@ export default function DianaChat({ vertical = "" }) {
           </header>
           <div className="diana-chat__intro">
             <span>EXTREME STUDIOS / AI ASSISTANT</span>
-            <p>Tanya layanan atau project kami.</p>
+            <p>{isMua ? "Tanya harga, fitur, dan cara order Website MUA." : "Tanya layanan atau project kami."}</p>
           </div>
           <div className="diana-chat__messages">
             {messages.map((message, index) => (
@@ -75,12 +71,12 @@ export default function DianaChat({ vertical = "" }) {
               ref={inputRef}
               value={input}
               onChange={(event) => setInput(event.target.value)}
-              placeholder="Tulis pertanyaan..."
+              placeholder={isMua ? "Tanya order Website MUA..." : "Tulis pertanyaan..."}
               maxLength={400}
             />
             <button type="submit" disabled={!input.trim() || isSending} aria-label="Kirim pesan">↗</button>
           </form>
-          <p className="diana-chat__note">Pertanyaan di luar konteks diteruskan ke admin.</p>
+          <p className="diana-chat__note">{isMua ? "Diana membantu menjelaskan paket dan proses order." : "Pertanyaan di luar konteks diteruskan ke admin."}</p>
         </section>
       )}
       <button

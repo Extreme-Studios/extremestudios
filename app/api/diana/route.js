@@ -121,6 +121,7 @@ function limitWords(text, maxWords = 10) {
 function getMuaAnswer(question, config) {
   const value = normalize(question);
   if (/(harga|biaya|berapa|promo|bayar|pembayaran)/.test(value)) return `Harga promo ${config.price}. Domain .com satu tahun sudah termasuk.`;
+  if (/(order|pesan|beli|caradaftar|carapesan|mulai)/.test(value)) return "Sampaikan kebutuhan melalui Diana, kami konfirmasi detail, lalu pembayaran setelah paket disepakati.";
   if (/(domain|com)/.test(value)) return "Domain .com satu tahun sudah termasuk dalam harga promo.";
   if (/(fitur|dapatapa|termasuk)/.test(value)) return "Termasuk website, portfolio, Diana AI, form calon pengantin, booking, kalender, WhatsApp, dan domain.";
   if (/(calendar|kalender|jadwal|tanggal|tersedia)/.test(value)) return "Website dapat mengecek jadwal. Demo memakai data simulasi dan siap dihubungkan ke Google Calendar.";

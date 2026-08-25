@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { apps } from "@/data/apps";
+import { getVerticalConfig } from "@/data/verticals";
 
 export const runtime = "nodejs";
 
@@ -108,6 +109,29 @@ function limitToTenWords(text) {
     .join(" ");
 }
 
+function limitWords(text, maxWords = 10) {
+  return String(text || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(" ")
+    .slice(0, maxWords)
+    .join(" ");
+}
+
+function getMuaAnswer(question, config) {
+  const value = normalize(question);
+  if (/(harga|biaya|berapa|promo|bayar|pembayaran)/.test(value)) return `Harga promo ${config.price}. Domain .com satu tahun sudah termasuk.`;
+  if (/(domain|com)/.test(value)) return "Domain .com satu tahun sudah termasuk dalam harga promo.";
+  if (/(fitur|dapatapa|termasuk)/.test(value)) return "Termasuk website, portfolio, Diana AI, form calon pengantin, booking, kalender, WhatsApp, dan domain.";
+  if (/(calendar|kalender|jadwal|tanggal|tersedia)/.test(value)) return "Website dapat mengecek jadwal. Demo memakai data simulasi dan siap dihubungkan ke Google Calendar.";
+  if (/(booking|pesan|reservasi)/.test(value)) return "Calon pengantin memilih acara, tanggal, paket, lalu mengisi detail booking di website.";
+  if (/(diana|aiassistant|chatbot|asisten)/.test(value)) return "Diana membantu menjawab paket, proses, dan booking calon client sepanjang waktu.";
+  if (/(proses|buatnya|pembuatan|berapa.*lama)/.test(value)) return "Kami siapkan konsep, desain, isi portfolio, alur booking, lalu website dipublikasikan.";
+  if (/(manfaat|membantu|gunanya)/.test(value)) return "Website membuat portfolio, paket, pertanyaan, dan booking calon client lebih rapi.";
+  if (/(whatsapp|wa)/.test(value)) return "WhatsApp dipakai untuk follow-up ketika calon client sudah siap melanjutkan booking.";
+  return null;
+}
+
 async function notifyAdmin(question) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_ADMIN_CHAT_ID;
@@ -139,6 +163,34 @@ export async function POST(request) {
   const question = String(body?.message || "").trim();
   if (!question || question.length > 400) {
     return NextResponse.json({ answer: "Tulis pertanyaan singkat, ya." }, { status: 400 });
+  }
+
+  const vertical = getVerticalConfig(body?.vertical);
+  if (vertical) {
+    const directAnswer = getMuaAnswer(question, vertical);
+    if (directAnswer) return NextResponse.json({ answer: limitWords(directAnswer, 32) });
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      return NextResponse.json({ answer: "Diana MUA menjelaskan harga, fitur, booking, kalender, dan proses website." });
+    }
+
+    const verticalContext = `Produk: ${vertical.productName}. Harga promo: ${vertical.price}. ${vertical.badge}. Fitur: ${vertical.features.map(([, title]) => title).join(", ")}. Demo service: ${vertical.demoServices.join(", ")}. Paket demo: ${vertical.demoPackages.map((item) => `${item.name} ${item.price}`).join(", ")}. FAQ: ${vertical.faq.map(([q, a]) => `${q}: ${a}`).join(" ")}.`;
+    const prompt = `${vertical.chatbotPrompt}\n\n${verticalContext}\n\nAturan:\n- Jawab hanya seputar Website MUA + AI Assistant Extreme Studios.\n- Pahami bahasa Indonesia santai dan typo.\n- Jangan menyuruh visitor menghubungi WhatsApp untuk pertanyaan awal.\n- Jika diminta order/pembayaran, arahkan: \"Mulai order dengan mengisi kebutuhan melalui Diana; detail pembayaran dibuka setelah order siap.\"\n- Jawaban maksimal 32 kata, tanpa emoji.\n- Keluarkan JSON murni: {"answer":"..."}.\n\nPertanyaan: ${question}`;
+    try {
+      const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent?key=${apiKey}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contents: [{ role: "user", parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json", maxOutputTokens: 110 } })
+      });
+      if (!geminiResponse.ok) throw new Error("Gemini request failed");
+      const geminiData = await geminiResponse.json();
+      const rawText = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text;
+      const decision = JSON.parse(rawText || "{}");
+      return NextResponse.json({ answer: limitWords(decision.answer || "Diana dapat menjelaskan paket Website MUA dan demo booking.", 32) });
+    } catch {
+      return NextResponse.json({ answer: "Diana dapat menjelaskan harga, fitur, booking, kalender, dan proses Website MUA." });
+    }
   }
 
   const directAnswer = getWebsiteAnswer(question);

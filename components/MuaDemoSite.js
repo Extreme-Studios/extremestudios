@@ -1,0 +1,31 @@
+"use client";
+
+import { useState } from "react";
+import DianaChat from "@/components/DianaChat";
+
+const looks = [
+  ["Soft Glam", "Natural glow", "linear-gradient(145deg,#d9a28f,#f5ddd0)"],
+  ["Classic Bride", "Timeless elegance", "linear-gradient(145deg,#8f5f5b,#e5b6ae)"],
+  ["Modern Hijab", "Clean & graceful", "linear-gradient(145deg,#b18c86,#f0d7cc)"],
+  ["Garden Party", "Fresh romantic", "linear-gradient(145deg,#9d9d78,#edcfbd)"]
+];
+const packages = [
+  ["The Intimate", "Rp1.250.000", "Makeup akad + hijab styling"],
+  ["The Signature", "Rp2.250.000", "Makeup + hairdo + touch-up"],
+  ["The Celebration", "Rp3.500.000", "Bride + 2 family members"]
+];
+
+export default function MuaDemoSite() {
+  const [booked, setBooked] = useState(false);
+  const [selected, setSelected] = useState(packages[1][0]);
+  return <main className="demo-mua"><DianaChat vertical="mua" />
+    <div className="demo-mua__demo-bar"><span>WEBSITE DEMO</span><a href="/mua">Ingin website seperti ini? Lihat paket Extreme Studios →</a></div>
+    <header className="demo-mua__nav"><a href="#demo-home" className="demo-mua__logo"><i>L</i><span>LUMINA<small>MAKEUP ARTIST</small></span></a><nav><a href="#demo-about">Tentang</a><a href="#demo-portfolio">Portfolio</a><a href="#demo-packages">Paket</a><a href="#demo-booking">Booking</a></nav><a href="#demo-booking" className="demo-mua__nav-cta">Cek ketersediaan</a></header>
+    <section id="demo-home" className="demo-mua__hero"><div className="demo-mua__hero-copy"><p className="demo-mua__eyebrow">MAKEUP FOR YOUR MOMENT</p><h1>Make your beauty<br /><em>more meaningful.</em></h1><p>Riasan yang terasa seperti diri kamu sendiri—lebih percaya diri, lebih bersinar, dan siap menyimpan momen selamanya.</p><div><a href="#demo-packages" className="demo-mua__button">Lihat paket <b>→</b></a><a href="#demo-portfolio" className="demo-mua__text-link">Lihat portfolio</a></div></div><div className="demo-mua__hero-art"><div className="demo-mua__portrait"><span>BRIDAL<br /><i>beauty</i></span></div><div className="demo-mua__hero-note"><small>AVAILABLE FOR</small><b>2026 BRIDES</b><span>Surabaya · Sidoarjo · Jawa Timur</span></div><div className="demo-mua__hero-stamp">L<br /><small>LM</small></div></div></section>
+    <section id="demo-about" className="demo-mua__intro"><p className="demo-mua__eyebrow">A LITTLE ABOUT US</p><h2>Riasan yang memperkuat<br /><em>cerita kamu.</em></h2><p>Setiap wajah punya karakter dan setiap acara punya cerita. Lumina membantu kamu menemukan look yang nyaman, elegan, dan cocok untuk momen yang paling berarti.</p><div className="demo-mua__metrics"><span><b>8+</b><small>Tahun pengalaman</small></span><span><b>500+</b><small>Brides served</small></span><span><b>4.9</b><small>Client rating</small></span></div></section>
+    <section id="demo-portfolio" className="demo-mua__portfolio"><div className="demo-mua__section-head"><div><p className="demo-mua__eyebrow">THE PORTFOLIO</p><h2>Looks we love.</h2></div><a href="#demo-booking">Konsultasikan look kamu →</a></div><div className="demo-mua__look-grid">{looks.map(([name, note, background], index) => <article className={`demo-mua__look demo-mua__look--${index + 1}`} key={name}><div style={{ background }}><span>{String(index + 1).padStart(2, "0")}</span></div><h3>{name}</h3><p>{note}</p></article>)}</div></section>
+    <section id="demo-packages" className="demo-mua__packages"><div className="demo-mua__section-head"><div><p className="demo-mua__eyebrow">THE EXPERIENCE</p><h2>Choose your moment.</h2></div><p>Semua paket dapat disesuaikan dengan kebutuhan acara dan look yang kamu inginkan.</p></div><div className="demo-mua__package-grid">{packages.map(([name, price, note], index) => <button className={`demo-mua__package ${selected === name ? "selected" : ""}`} key={name} onClick={() => setSelected(name)}><small>0{index + 1}</small><h3>{name}</h3><p>{note}</p><strong>{price}</strong><span>{selected === name ? "Paket dipilih ✓" : "Pilih paket →"}</span></button>)}</div></section>
+    <section id="demo-booking" className="demo-mua__booking"><div><p className="demo-mua__eyebrow">LET'S MAKE IT YOURS</p><h2>Cerita acara kamu<br /><em>dimulai di sini.</em></h2><p>Pilih tanggal dan isi detail singkat. Chat assistant kami juga siap membantu menjawab pertanyaan kamu.</p><div className="demo-mua__booking-facts"><span>✓ Free consultation</span><span>✓ Response within 24 hours</span><span>✓ Demo — no real booking sent</span></div></div>{!booked ? <form onSubmit={(event) => { event.preventDefault(); setBooked(true); }}><label>Nama kamu<input required placeholder="Nama calon pengantin" /></label><label>Nomor WhatsApp<input required type="tel" placeholder="08xxxxxxxxxx" /></label><label>Tanggal acara<input required type="date" /></label><label>Paket pilihan<select value={selected} onChange={(event) => setSelected(event.target.value)}>{packages.map(([name]) => <option key={name}>{name}</option>)}</select></label><button className="demo-mua__button" type="submit">Cek ketersediaan <b>→</b></button></form> : <div className="demo-mua__success"><span>✓</span><h3>Terima kasih, Kak.</h3><p>Ini hanya demo website. Data tidak dikirim ke MUA sungguhan.</p><button onClick={() => setBooked(false)}>Coba lagi</button></div>}</section>
+    <footer className="demo-mua__footer"><a href="/mua">Website MUA + Chat Assistant oleh Extreme Studios</a><span>© 2026 Lumina Makeup Artist · Demo</span></footer>
+  </main>;
+}

@@ -30,6 +30,11 @@
 .profile-diana img { animation: visualFloat 7s ease-in-out infinite; will-change: transform; }
 .project-card:nth-child(2n) .project-visual img { animation-delay: -2.2s; animation-duration: 8.5s; }
 .project-card:nth-child(3n) .project-visual img { animation-delay: -4.1s; animation-duration: 9s; }
+.project-card:nth-child(4n) .project-visual img { animation-delay: -6.8s; animation-duration: 7.4s; }
+.project-card:nth-child(5n) .project-visual img { animation-delay: -1.1s; animation-duration: 10.2s; }
+.project-card:nth-child(6n) .project-visual img { animation-delay: -5.3s; animation-duration: 8.1s; }
+.profile-project-grid article:nth-child(2n) .project-visual img { animation-delay: -2.9s; animation-duration: 8.8s; }
+.profile-project-grid article:nth-child(3n) .project-visual img { animation-delay: -5.4s; animation-duration: 10s; }
 .mua-device { animation: visualFloat 7.5s ease-in-out infinite; }
 .mua-mini-chat { animation: visualFloat 6s ease-in-out -1.8s infinite; }
 .mua-float-card { animation: visualFloat 5.5s ease-in-out -3s infinite; }

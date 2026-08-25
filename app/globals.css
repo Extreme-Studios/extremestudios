@@ -23,6 +23,30 @@
 .diana-chat--mua .diana-chat__form input:focus { border-color:#b36e65; box-shadow:0 0 0 3px rgba(179,110,101,.12); }
 .diana-chat--mua .diana-chat__form button { color:#fffaf5; background:#80564a; }
 
+/* Subtle motion for product visuals across the site */
+.project-visual img,
+.profile-project-grid .project-visual img,
+.diana-visual img,
+.profile-diana img { animation: visualFloat 7s ease-in-out infinite; will-change: transform; }
+.project-card:nth-child(2n) .project-visual img { animation-delay: -2.2s; animation-duration: 8.5s; }
+.project-card:nth-child(3n) .project-visual img { animation-delay: -4.1s; animation-duration: 9s; }
+.mua-device { animation: visualFloat 7.5s ease-in-out infinite; }
+.mua-mini-chat { animation: visualFloat 6s ease-in-out -1.8s infinite; }
+.mua-float-card { animation: visualFloat 5.5s ease-in-out -3s infinite; }
+@keyframes visualFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-visual img,
+  .profile-project-grid .project-visual img,
+  .diana-visual img,
+  .profile-diana img,
+  .mua-device,
+  .mua-mini-chat,
+  .mua-float-card { animation: none; }
+}
+
 :root {
   color-scheme: dark;
 }

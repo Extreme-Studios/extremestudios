@@ -2,11 +2,11 @@ import "./globals.css";
 import AudioFeedback from "@/components/AudioFeedback";
 
 export const metadata = {
-  title: "Extreme Studios | AI Engineering & Software Development",
-  description: "Extreme Studios adalah studio teknologi yang berfokus pada Artificial Intelligence, software, aplikasi Android, dan solusi digital yang berdampak nyata.",
+  title: "Extreme Studios | AI, Web & Software Development",
+  description: "Extreme Studios membangun Artificial Intelligence, website, software, aplikasi Android, dan solusi digital yang berdampak nyata.",
   openGraph: {
     title: "Extreme Studios",
-    description: "AI Engineering & Software Development",
+    description: "AI, Web & Software Development",
     type: "website"
   }
 };

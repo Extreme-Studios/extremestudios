@@ -17,6 +17,8 @@ Extreme Studios HUB, Auto Cut Video, Pas Photo Layout, Photography Invoice.
 Program terbaru: Pelatihan AI Engineer Basic untuk siswa SD kelas 4-6. Materinya pengenalan
 AI dan pembuatan aplikasi Android dengan AI serta Android Studio. Durasi 4 pertemuan, 1 jam
 pertemuan; biaya Rp250.000 per siswa; kuota minimum 5 dan maksimum 10 siswa.
+Workshop UMKM Naik Kelas: workshop praktis untuk pelaku UMKM tentang branding, strategi digital,
+dan pemanfaatan teknologi agar bisnis lebih siap tumbuh. Status informasi jadwal dan biaya: segera hadir.
 Layanan Extreme Studios: AI Engineering, Software Development, Android Development, Web
 Application, Automation, Research & Development, dan AI Education.
 Web Builder Extreme Studios: pembuatan website interactive, marketplace, web chatbot, landing
@@ -44,7 +46,10 @@ function getWebsiteAnswer(question) {
   const value = normalize(question);
 
   if (/(event|acara|program)(terbaru|baru)/.test(value)) {
-    return "Event terbaru kami Pelatihan AI Engineer Basic.";
+    return "Program terbaru kami Pelatihan AI Engineer Basic dan Workshop UMKM Naik Kelas.";
+  }
+  if (value.includes("umkm") && /(workshop|naikkelas|program|acara)/.test(value)) {
+    return "Workshop UMKM Naik Kelas membahas branding, strategi digital, dan pemanfaatan teknologi untuk UMKM. Jadwal serta biaya akan segera diumumkan.";
   }
   if (value.includes("aiengineer") && /(harga|biaya|bayar)/.test(value)) {
     return "Biaya AI Engineer Basic Rp250.000 per siswa.";

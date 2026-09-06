@@ -23,15 +23,16 @@ function FloatingSystem({ type }) {
   return <div className="journey-system journey-system--program"><div className="journey-program-image"><img src="/umkm-naik-kelas-workshop.png" alt="" /></div><div className="journey-program-chip journey-program-chip--one"><small>AI EDUCATION</small><b>AI Engineer<br />Basic</b></div><div className="journey-program-chip journey-program-chip--two"><small>UMKM WORKSHOP</small><b>Naik Kelas<br />Digital</b></div></div>;
 }
 
-function NeuralSpine() {
-  return <div className="journey-neural-spine" aria-hidden="true">
-    <svg viewBox="0 0 240 1000" preserveAspectRatio="none">
-      <defs><linearGradient id="spineGlow" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#75eeff" /><stop offset=".5" stopColor="#9c75ff" /><stop offset="1" stopColor="#ec9aff" /></linearGradient></defs>
-      <path className="journey-neural-spine__shadow" d="M120 0 C62 72 182 130 120 200 S66 324 120 400 S185 515 120 600 S64 728 120 800 S180 915 120 1000" />
-      <path className="journey-neural-spine__line" d="M120 0 C62 72 182 130 120 200 S66 324 120 400 S185 515 120 600 S64 728 120 800 S180 915 120 1000" />
-      <path className="journey-neural-spine__branch" d="M120 101 C84 105 60 121 20 127 M120 201 C157 205 187 223 224 231 M120 401 C79 408 55 426 18 433 M120 601 C160 611 191 626 225 637 M120 801 C81 813 55 830 17 838" />
-      {[100, 200, 400, 600, 800].map((point) => <circle className="journey-neural-spine__node" cx="120" cy={point} r="9" key={point} />)}
+function MatrixNeuronField() {
+  const nodes = [[104,92],[238,163],[406,77],[570,188],[747,106],[897,246],[143,369],[332,292],[515,410],[697,332],[878,460],[84,588],[263,505],[440,666],[627,541],[809,678],[940,572],[157,812],[369,735],[560,897],[752,799],[906,956],[105,1082],[298,1210],[486,1098],[682,1260],[860,1143],[959,1374],[176,1450],[394,1342],[575,1511],[760,1420],[910,1646],[102,1778],[306,1670],[502,1872],[700,1730],[868,1950],[950,2110],[188,2210],[416,2070],[621,2290],[810,2168],[920,2410]];
+  return <div className="journey-matrix-field" aria-hidden="true">
+    <svg viewBox="0 0 1000 2500" preserveAspectRatio="none">
+      <defs><linearGradient id="matrixFlow" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#56f0ff" /><stop offset=".48" stopColor="#8e67ff" /><stop offset="1" stopColor="#f08fe8" /></linearGradient></defs>
+      <g className="journey-matrix-field__far"><path d="M0 104 L238 163 L406 77 L570 188 L747 106 L1000 222 M0 580 L263 505 L440 666 L627 541 L809 678 L1000 570 M0 1085 L298 1210 L486 1098 L682 1260 L860 1143 L1000 1370 M0 1775 L306 1670 L502 1872 L700 1730 L868 1950 L1000 2115 M0 2208 L188 2210 L416 2070 L621 2290 L810 2168 L1000 2410" /></g>
+      <g className="journey-matrix-field__near"><path d="M104 92 L143 369 L263 505 L157 812 L298 1210 L176 1450 L306 1670 L188 2210 M406 77 L332 292 L515 410 L440 666 L486 1098 L394 1342 L502 1872 L416 2070 M747 106 L697 332 L878 460 L809 678 L860 1143 L760 1420 L868 1950 L810 2168 M897 246 L940 572 L906 956 L959 1374 L910 1646 L950 2110 L920 2410" /></g>
+      <g className="journey-matrix-field__nodes">{nodes.map(([cx, cy], index) => <circle cx={cx} cy={cy} r={index % 5 === 0 ? 7 : 3.5} key={`${cx}-${cy}`} />)}</g>
     </svg>
+    <span className="journey-matrix-field__pulse journey-matrix-field__pulse--one" /><span className="journey-matrix-field__pulse journey-matrix-field__pulse--two" /><span className="journey-matrix-field__pulse journey-matrix-field__pulse--three" />
   </div>;
 }
 
@@ -90,7 +91,7 @@ export default function CinematicJourney() {
   }, []);
 
   return <section className="cinematic-journey" aria-label="Extreme Studios journey">
-    <NeuralSpine />
+    <MatrixNeuronField />
     <div className="cinematic-journey__rail"><span /><span /><span /><span /><span /></div>
     {stages.map((stage, index) => <article id={stage.id} data-index={index} ref={(element) => { refs.current[index] = element; }} style={{ "--scene-enter": index === 0 ? 1 : 0, "--scene-exit": 0, "--scene-travel": index === 0 ? 0.5 : 0 }} className={`journey-stage ${active === index ? "journey-stage--active" : ""}`} key={stage.id}>
       <div className="journey-stage__copy"><p>{stage.kicker}</p><h2>{stage.title}</h2><span className="journey-stage__number">0{index + 1}</span><div className="journey-stage__line" /><p className="journey-stage__body">{stage.body}</p><a href={stage.link[1]} className="journey-stage__link">{stage.link[0]} <b>→</b></a></div>

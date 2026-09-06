@@ -174,6 +174,7 @@ a {
 /* Cinematic homepage treatment inspired by the supplied reference. */
 .hero-shell--cinematic { isolation:isolate; min-height:720px; background:radial-gradient(circle at 76% 50%,rgba(120,66,255,.18),transparent 28%),radial-gradient(circle at 98% 12%,rgba(255,58,140,.17),transparent 24%),linear-gradient(115deg,#02040b 0%,#050615 52%,#080611 100%); }
 .hero-shell--cinematic { --hero-exit:0; overflow:clip; perspective:1400px; }
+.hero-shell--cinematic > .mx-auto { transform:translateY(-3.5rem); }
 .hero-shell--cinematic .hero-copy { opacity:calc(1 - var(--hero-exit)*1.16); transform:translate3d(calc(var(--hero-exit)*-11vw),calc(var(--hero-exit)*-15vh),calc(var(--hero-exit)*-420px)) rotateY(calc(var(--hero-exit)*22deg)) rotateX(calc(var(--hero-exit)*-8deg)) scale(calc(1 - var(--hero-exit)*.2)); transform-origin:20% 50%; will-change:transform,opacity; }
 .hero-shell--cinematic .cinematic-stage { opacity:calc(1 - var(--hero-exit)*.9); transform:translate3d(calc(var(--hero-exit)*12vw),calc(var(--hero-exit)*-11vh),calc(var(--hero-exit)*-520px)) rotateY(calc(var(--hero-exit)*-27deg)) rotateX(calc(var(--hero-exit)*9deg)) scale(calc(1 - var(--hero-exit)*.25)); transform-origin:65% 52%; will-change:transform,opacity; }
 .hero-shell--cinematic .hero-shell__scroll { opacity:calc(1 - var(--hero-exit)*2); transform:translateY(calc(var(--hero-exit)*20px)); }

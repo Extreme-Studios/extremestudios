@@ -26,13 +26,13 @@ void main() {
 
   float orbit = time * .2 + uScroll * 8.4;
   point.xz = rotate2d(orbit * .58) * point.xz;
-  point.xy = rotate2d(-orbit * .16 + uPointer.x * .56) * point.xy;
-  point.yz = rotate2d(uPointer.y * .36 + sin(time * .35) * .07) * point.yz;
+  point.xy = rotate2d(-orbit * .16 + uPointer.x * .78) * point.xy;
+  point.yz = rotate2d(uPointer.y * .55 + sin(time * .35) * .07) * point.yz;
   point *= .9 + .17 * sin(uScroll * 18.85 + aPosition.z * .65);
 
-  vec3 camera = vec3(uPointer.x * 1.12 + sin(uScroll * 7.0) * .2, -uPointer.y * .78 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
+  vec3 camera = vec3(uPointer.x * 1.45 + sin(uScroll * 7.0) * .2, -uPointer.y * 1.05 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
   vec3 view = point - camera;
-  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .26) * view.xz;
+  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .36) * view.xz;
   view.xy = rotate2d(sin(uScroll * 11.0) * .045) * view.xy;
 
   float depth = max(.28, -view.z);
@@ -161,6 +161,8 @@ export default function GlobalParticleField() {
     let frame = 0;
     let visible = !document.hidden;
     let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0;
+    let gyroTargetX = 0, gyroTargetY = 0;
+    let gyroActive = false, gyroListening = false, gyroBaseline = null;
     const startedAt = performance.now();
     const resize = () => {
       const density = Math.min(devicePixelRatio || 1, mobile ? 1.3 : 1.75);
@@ -176,14 +178,36 @@ export default function GlobalParticleField() {
       targetX = (event.clientX / innerWidth - .5) * 2;
       targetY = (event.clientY / innerHeight - .5) * 2;
     };
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    const onOrientation = (event) => {
+      if (!Number.isFinite(event.beta) || !Number.isFinite(event.gamma)) return;
+      if (!gyroBaseline) gyroBaseline = { beta: event.beta, gamma: event.gamma };
+      gyroTargetX = clamp((event.gamma - gyroBaseline.gamma) / 15, -1.35, 1.35);
+      gyroTargetY = clamp((event.beta - gyroBaseline.beta) / 15, -1.35, 1.35);
+      gyroActive = true;
+    };
+    const startGyro = () => {
+      if (reduced || gyroListening || typeof window.DeviceOrientationEvent === "undefined") return;
+      gyroListening = true;
+      window.addEventListener("deviceorientation", onOrientation, { passive: true });
+    };
+    const requestGyro = () => {
+      const orientation = window.DeviceOrientationEvent;
+      if (reduced || !orientation || gyroListening) return;
+      if (typeof orientation.requestPermission === "function") {
+        orientation.requestPermission().then((permission) => { if (permission === "granted") startGyro(); }).catch(() => {});
+      } else startGyro();
+    };
     const onVisibility = () => { visible = !document.hidden; if (visible && !frame) frame = requestAnimationFrame(draw); };
     const getScroll = () => Math.max(0, Math.min(1, scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)));
     function draw(now) {
       frame = 0;
       if (!visible) return;
       resize();
-      pointerX += (targetX - pointerX) * .035;
-      pointerY += (targetY - pointerY) * .035;
+      const motionX = gyroActive ? gyroTargetX : targetX;
+      const motionY = gyroActive ? gyroTargetY : targetY;
+      pointerX += (motionX - pointerX) * .065;
+      pointerY += (motionY - pointerY) * .065;
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
       gl.useProgram(program);
@@ -200,10 +224,17 @@ export default function GlobalParticleField() {
     frame = requestAnimationFrame(draw);
     addEventListener("resize", resize, { passive: true });
     addEventListener("pointermove", onPointer, { passive: true });
+    if (mobile && !reduced) {
+      if (typeof window.DeviceOrientationEvent?.requestPermission === "function") {
+        window.addEventListener("pointerdown", requestGyro, { once: true, passive: true });
+      } else requestGyro();
+    }
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       removeEventListener("resize", resize);
       removeEventListener("pointermove", onPointer);
+      window.removeEventListener("pointerdown", requestGyro);
+      window.removeEventListener("deviceorientation", onOrientation);
       document.removeEventListener("visibilitychange", onVisibility);
       if (frame) cancelAnimationFrame(frame);
       gl.deleteBuffer(positionBuffer);

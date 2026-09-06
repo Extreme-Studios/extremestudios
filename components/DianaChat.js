@@ -9,6 +9,8 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
   const [messages, setMessages] = useState([{ role: "diana", text: isMua ? `Halo Kak, saya ${assistantName}. Mau tahu harga dan cara order Website MUA?` : `Halo, saya ${assistantName}. Ada yang ingin ditanyakan?` }]);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [position, setPosition] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
   const orderUrl = "https://wa.me/6289677523666?text=Halo%20Extreme%20Studios,%20saya%20berminat%20order%20Website%20MUA%20%2B%20AI%20Assistant.";
 
   useEffect(() => {
@@ -20,6 +22,35 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
     return () => window.removeEventListener("open-diana", openFromCta);
   }, [vertical]);
   const inputRef = useRef(null);
+  const dragRef = useRef(null);
+  const draggedRef = useRef(false);
+
+  function startDrag(event) {
+    if (isMua || event.button !== 0) return;
+    const bounds = event.currentTarget.parentElement.getBoundingClientRect();
+    dragRef.current = { pointerId: event.pointerId, offsetX: event.clientX - bounds.left, offsetY: event.clientY - bounds.top };
+    draggedRef.current = false;
+    setIsDragging(true);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function moveDrag(event) {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    if (Math.abs(event.movementX) + Math.abs(event.movementY) > 1) draggedRef.current = true;
+    const maxX = Math.max(8, window.innerWidth - 178);
+    const maxY = Math.max(8, window.innerHeight - 66);
+    setPosition({ x: Math.min(maxX, Math.max(8, event.clientX - drag.offsetX)), y: Math.min(maxY, Math.max(8, event.clientY - drag.offsetY)) });
+  }
+
+  function endDrag(event) {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    setIsDragging(false);
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
+    window.setTimeout(() => { draggedRef.current = false; }, 0);
+  }
 
   async function sendMessage(event) {
     event.preventDefault();
@@ -55,7 +86,7 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
   }
 
   return (
-    <aside id="diana" className={`diana-chat ${isMua ? "diana-chat--mua" : ""} ${isOpen ? "diana-chat--open" : ""}`} aria-label={`Chat dengan ${assistantName}`}>
+    <aside id="diana" style={position && !isMua ? { left: position.x, top: position.y, right: "auto", bottom: "auto" } : undefined} className={`diana-chat ${isMua ? "diana-chat--mua" : ""} ${isOpen ? "diana-chat--open" : ""} ${isDragging ? "diana-chat--dragging" : ""}`} aria-label={`Chat dengan ${assistantName}`}>
       {isOpen && (
         <section className="diana-chat__panel" aria-live="polite">
           <header className="diana-chat__header">
@@ -93,8 +124,13 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
       <button
         type="button"
         className="diana-chat__launcher"
-        onClick={() => setIsOpen((open) => !open)}
+        onPointerDown={startDrag}
+        onPointerMove={moveDrag}
+        onPointerUp={endDrag}
+        onPointerCancel={endDrag}
+        onClick={() => { if (!draggedRef.current) setIsOpen((open) => !open); }}
         aria-expanded={isOpen}
+        title={isMua ? `Buka chat ${assistantName}` : "Klik untuk chat, seret untuk memindahkan"}
       >
         <span className="diana-chat__pulse" />
         <img className="diana-chat__launcher-icon" src="/diana-cs-avatar.png" alt="" />

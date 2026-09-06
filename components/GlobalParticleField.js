@@ -43,7 +43,8 @@ void main() {
   float near = clamp(1.13 - depth / 8.0, .12, 1.0);
   gl_PointSize = clamp(5.1 * uPixelRatio * (1.0 / depth) * (1.0 + near), 1.0, 14.0 * uPixelRatio);
   vColor = aColor * (.72 + near * .66);
-  vAlpha = near * .94;
+  float pageExit = 1.0 - smoothstep(.72, .91, uScroll);
+  vAlpha = near * .94 * pageExit;
 }
 `;
 

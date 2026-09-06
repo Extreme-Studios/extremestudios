@@ -206,6 +206,7 @@ export const apps = [
     category: "Web Project · Organization Portal",
     group: "other",
     mockup: "/project-parfi-jatim/parfi-home.png",
+    website: "https://parfijatim.com",
     desc: "Website resmi PARFI Jawa Timur untuk profil organisasi, berita, agenda, dan galeri film. Ini adalah project website, bukan aplikasi.",
     longDesc: "Web PARFI Jatim adalah portal organisasi berbasis website yang dirancang untuk menampilkan informasi, agenda, berita, dan karya perfilman Jawa Timur dalam satu pengalaman digital yang responsif.",
     points: ["Website organisasi", "Portal berita", "Agenda kegiatan", "Galeri film", "Responsive web"]

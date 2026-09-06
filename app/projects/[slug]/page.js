@@ -30,6 +30,7 @@ export default function ProjectDetail({ params }) {
           <p className="text-xs font-black uppercase tracking-[0.28em] text-neon">{app.category}</p>
           <h1 className="mt-5 text-5xl font-black leading-[0.95] text-white md:text-7xl">{app.title}</h1>
           <p className="mt-7 text-lg leading-8 text-slate-400">{app.longDesc}</p>
+          {app.website && <a href={app.website} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-full border border-neon/40 bg-neon/10 px-4 py-2 text-sm font-black text-neon transition hover:bg-neon hover:text-ink">{app.website.replace(/^https?:\/\//, "")} ↗</a>}
           <div className="mt-8 flex flex-wrap gap-3">
             {app.points.map((point) => (
               <span key={point} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-slate-200">

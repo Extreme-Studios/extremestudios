@@ -44,11 +44,44 @@ export default function CinematicJourney() {
     return () => observer.disconnect();
   }, []);
 
+  // The scenes are driven by the physical scroll position, not a timed animation.
+  // A card therefore travels through depth as the visitor moves to the next section.
+  useEffect(() => {
+    let animationFrame;
+
+    const clamp = (value) => Math.min(1, Math.max(0, value));
+    const paintScenes = () => {
+      const viewport = window.innerHeight || 1;
+      refs.current.forEach((element) => {
+        if (!element) return;
+        const bounds = element.getBoundingClientRect();
+        const travel = clamp((viewport - bounds.top) / (viewport + bounds.height));
+        const enter = clamp(travel * 2.15);
+        const exit = clamp((travel - 0.47) * 2.15);
+        element.style.setProperty("--scene-enter", enter.toFixed(3));
+        element.style.setProperty("--scene-exit", exit.toFixed(3));
+        element.style.setProperty("--scene-travel", travel.toFixed(3));
+      });
+      animationFrame = undefined;
+    };
+    const schedulePaint = () => {
+      if (!animationFrame) animationFrame = window.requestAnimationFrame(paintScenes);
+    };
+    paintScenes();
+    window.addEventListener("scroll", schedulePaint, { passive: true });
+    window.addEventListener("resize", schedulePaint);
+    return () => {
+      window.removeEventListener("scroll", schedulePaint);
+      window.removeEventListener("resize", schedulePaint);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, []);
+
   return <section className="cinematic-journey" aria-label="Extreme Studios journey">
     <div className="cinematic-journey__rail"><span /><span /><span /><span /><span /></div>
-    {stages.map((stage, index) => <article id={stage.id} data-index={index} ref={(element) => { refs.current[index] = element; }} className={`journey-stage ${active === index ? "journey-stage--active" : ""}`} key={stage.id}>
+    {stages.map((stage, index) => <article id={stage.id} data-index={index} ref={(element) => { refs.current[index] = element; }} style={{ "--scene-enter": index === 0 ? 1 : 0, "--scene-exit": 0, "--scene-travel": index === 0 ? 0.5 : 0 }} className={`journey-stage ${active === index ? "journey-stage--active" : ""}`} key={stage.id}>
       <div className="journey-stage__copy"><p>{stage.kicker}</p><h2>{stage.title}</h2><span className="journey-stage__number">0{index + 1}</span><div className="journey-stage__line" /><p className="journey-stage__body">{stage.body}</p><a href={stage.link[1]} className="journey-stage__link">{stage.link[0]} <b>→</b></a></div>
-      <div className="journey-stage__visual"><FloatingSystem type={stage.type} /></div>
+      <div className="journey-stage__visual"><div className="journey-stage__warp" aria-hidden="true"><i /><i /><i /></div><FloatingSystem type={stage.type} /></div>
     </article>)}
   </section>;
 }

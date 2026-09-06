@@ -91,7 +91,6 @@ export default function CinematicJourney() {
   }, []);
 
   return <section className="cinematic-journey" aria-label="Extreme Studios journey">
-    <MatrixNeuronField />
     <div className="cinematic-journey__rail"><span /><span /><span /><span /><span /></div>
     {stages.map((stage, index) => <article id={stage.id} data-index={index} ref={(element) => { refs.current[index] = element; }} style={{ "--scene-enter": index === 0 ? 1 : 0, "--scene-exit": 0, "--scene-travel": index === 0 ? 0.5 : 0 }} className={`journey-stage ${active === index ? "journey-stage--active" : ""}`} key={stage.id}>
       <div className="journey-stage__copy"><p>{stage.kicker}</p><h2>{stage.title}</h2><span className="journey-stage__number">0{index + 1}</span><div className="journey-stage__line" /><p className="journey-stage__body">{stage.body}</p><a href={stage.link[1]} className="journey-stage__link">{stage.link[0]} <b>→</b></a></div>

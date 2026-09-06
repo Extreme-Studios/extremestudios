@@ -1,0 +1,201 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
+const vertexShader = `
+attribute vec3 aPosition;
+attribute vec3 aColor;
+uniform float uTime;
+uniform float uScroll;
+uniform vec2 uPointer;
+uniform float uPixelRatio;
+uniform float uAspect;
+varying vec3 vColor;
+varying float vAlpha;
+
+mat2 rotate2d(float angle) {
+  float s = sin(angle), c = cos(angle);
+  return mat2(c, -s, s, c);
+}
+
+void main() {
+  vec3 point = aPosition;
+  float time = uTime * .12;
+  float wave = sin(point.x * 1.4 + time * 2.1) + cos(point.y * 1.15 - time * 1.35) + sin(point.z + time);
+  point += normalize(point + vec3(.001)) * wave * .05;
+
+  float orbit = time * .2 + uScroll * 8.4;
+  point.xz = rotate2d(orbit * .58) * point.xz;
+  point.xy = rotate2d(-orbit * .16 + uPointer.x * .12) * point.xy;
+  point.yz = rotate2d(uPointer.y * .08 + sin(time * .35) * .07) * point.yz;
+  point *= .9 + .17 * sin(uScroll * 18.85 + aPosition.z * .65);
+
+  vec3 camera = vec3(uPointer.x * .34 + sin(uScroll * 7.0) * .2, -uPointer.y * .22 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
+  vec3 view = point - camera;
+  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .045) * view.xz;
+  view.xy = rotate2d(sin(uScroll * 11.0) * .045) * view.xy;
+
+  float depth = max(.28, -view.z);
+  vec2 projected = view.xy * (1.62 / depth);
+  projected.x /= max(1.0, uAspect);
+  gl_Position = vec4(projected, 0.0, 1.0);
+
+  float near = clamp(1.13 - depth / 8.0, .12, 1.0);
+  gl_PointSize = clamp(3.7 * uPixelRatio * (1.0 / depth) * (1.0 + near), 1.0, 11.0 * uPixelRatio);
+  vColor = aColor * (.72 + near * .66);
+  vAlpha = near * .7;
+}
+`;
+
+const fragmentShader = `
+precision mediump float;
+varying vec3 vColor;
+varying float vAlpha;
+void main() {
+  vec2 uv = gl_PointCoord - .5;
+  float distanceToCenter = dot(uv, uv);
+  if (distanceToCenter > .25) discard;
+  float glow = exp(-distanceToCenter * 16.0);
+  float core = smoothstep(.08, 0.0, distanceToCenter);
+  gl_FragColor = vec4(vColor, (glow * .72 + core * .55) * vAlpha);
+}
+`;
+
+function compileShader(gl, type, source) {
+  const shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.warn(gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+  return shader;
+}
+
+function createProgram(gl) {
+  const vertex = compileShader(gl, gl.VERTEX_SHADER, vertexShader);
+  const fragment = compileShader(gl, gl.FRAGMENT_SHADER, fragmentShader);
+  if (!vertex || !fragment) return null;
+  const program = gl.createProgram();
+  gl.attachShader(program, vertex);
+  gl.attachShader(program, fragment);
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return null;
+  return program;
+}
+
+function makeParticles(count) {
+  const positions = new Float32Array(count * 3);
+  const colors = new Float32Array(count * 3);
+  const palette = [[.35, .93, 1], [.61, .34, 1], [1, .36, .78], [.52, 1, .78]];
+  for (let index = 0; index < count; index += 1) {
+    const offset = index * 3;
+    const chance = Math.random();
+    const angle = Math.random() * Math.PI * 2;
+    const tilt = (Math.random() - .5) * Math.PI;
+    const radius = chance < .56 ? 1.05 + Math.random() * 1.15 : .55 + Math.pow(Math.random(), .56) * 2.25;
+    positions[offset] = Math.cos(angle) * Math.cos(tilt) * radius + (Math.random() - .5) * .1;
+    positions[offset + 1] = Math.sin(tilt) * radius * .8 + (Math.random() - .5) * .1;
+    positions[offset + 2] = Math.sin(angle) * Math.cos(tilt) * radius + (Math.random() - .5) * .1;
+    const color = palette[(Math.random() * palette.length) | 0];
+    const intensity = .72 + Math.random() * .42;
+    colors[offset] = Math.min(1, color[0] * intensity);
+    colors[offset + 1] = Math.min(1, color[1] * intensity);
+    colors[offset + 2] = Math.min(1, color[2] * intensity);
+  }
+  return { positions, colors };
+}
+
+export default function GlobalParticleField() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    const gl = canvas.getContext("webgl", { alpha: true, antialias: false, premultiplied: false, powerPreference: "high-performance" });
+    if (!gl) { canvas.dataset.failed = "true"; return undefined; }
+    const program = createProgram(gl);
+    if (!program) { canvas.dataset.failed = "true"; return undefined; }
+
+    const mobile = matchMedia("(max-width: 720px)").matches;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const count = reduced ? 1100 : mobile ? 2800 : 6200;
+    const particles = makeParticles(count);
+    gl.useProgram(program);
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+    gl.disable(gl.DEPTH_TEST);
+
+    const positionLocation = gl.getAttribLocation(program, "aPosition");
+    const colorLocation = gl.getAttribLocation(program, "aColor");
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, particles.positions, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, false, 0, 0);
+    const colorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, particles.colors, gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(colorLocation);
+    gl.vertexAttribPointer(colorLocation, 3, gl.FLOAT, false, 0, 0);
+
+    const uniforms = {
+      time: gl.getUniformLocation(program, "uTime"), scroll: gl.getUniformLocation(program, "uScroll"), pointer: gl.getUniformLocation(program, "uPointer"), pixelRatio: gl.getUniformLocation(program, "uPixelRatio"), aspect: gl.getUniformLocation(program, "uAspect")
+    };
+    let frame = 0;
+    let visible = !document.hidden;
+    let pointerX = 0, pointerY = 0, targetX = 0, targetY = 0;
+    const startedAt = performance.now();
+    const resize = () => {
+      const density = Math.min(devicePixelRatio || 1, mobile ? 1.3 : 1.75);
+      const width = Math.max(1, Math.floor(innerWidth * density));
+      const height = Math.max(1, Math.floor(innerHeight * density));
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+        gl.viewport(0, 0, width, height);
+      }
+    };
+    const onPointer = (event) => {
+      targetX = (event.clientX / innerWidth - .5) * 2;
+      targetY = (event.clientY / innerHeight - .5) * 2;
+    };
+    const onVisibility = () => { visible = !document.hidden; if (visible && !frame) frame = requestAnimationFrame(draw); };
+    const getScroll = () => Math.max(0, Math.min(1, scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)));
+    function draw(now) {
+      frame = 0;
+      if (!visible) return;
+      resize();
+      pointerX += (targetX - pointerX) * .035;
+      pointerY += (targetY - pointerY) * .035;
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.useProgram(program);
+      gl.uniform1f(uniforms.time, (now - startedAt) / 1000);
+      gl.uniform1f(uniforms.scroll, getScroll());
+      gl.uniform2f(uniforms.pointer, pointerX, pointerY);
+      gl.uniform1f(uniforms.pixelRatio, Math.min(devicePixelRatio || 1, 1.75));
+      gl.uniform1f(uniforms.aspect, canvas.width / Math.max(1, canvas.height));
+      gl.drawArrays(gl.POINTS, 0, count);
+      if (!reduced) frame = requestAnimationFrame(draw);
+    }
+
+    resize();
+    frame = requestAnimationFrame(draw);
+    addEventListener("resize", resize, { passive: true });
+    addEventListener("pointermove", onPointer, { passive: true });
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      removeEventListener("resize", resize);
+      removeEventListener("pointermove", onPointer);
+      document.removeEventListener("visibilitychange", onVisibility);
+      if (frame) cancelAnimationFrame(frame);
+      gl.deleteBuffer(positionBuffer);
+      gl.deleteBuffer(colorBuffer);
+      gl.deleteProgram(program);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="global-particle-field" aria-hidden="true" />;
+}

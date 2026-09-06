@@ -25,21 +25,34 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
   const dragRef = useRef(null);
   const draggedRef = useRef(false);
 
+  useEffect(() => {
+    if (isMua) return undefined;
+    const onMove = (event) => moveDrag(event);
+    const onEnd = (event) => endDrag(event);
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onEnd);
+    window.addEventListener("pointercancel", onEnd);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onEnd);
+      window.removeEventListener("pointercancel", onEnd);
+    };
+  });
+
   function startDrag(event) {
     if (isMua || event.button !== 0) return;
     const bounds = event.currentTarget.parentElement.getBoundingClientRect();
-    dragRef.current = { pointerId: event.pointerId, offsetX: event.clientX - bounds.left, offsetY: event.clientY - bounds.top };
+    dragRef.current = { pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, offsetX: event.clientX - bounds.left, offsetY: event.clientY - bounds.top, width: bounds.width, height: bounds.height };
     draggedRef.current = false;
     setIsDragging(true);
-    event.currentTarget.setPointerCapture(event.pointerId);
   }
 
   function moveDrag(event) {
     const drag = dragRef.current;
     if (!drag || drag.pointerId !== event.pointerId) return;
-    if (Math.abs(event.movementX) + Math.abs(event.movementY) > 1) draggedRef.current = true;
-    const maxX = Math.max(8, window.innerWidth - 178);
-    const maxY = Math.max(8, window.innerHeight - 66);
+    if (Math.abs(event.clientX - drag.startX) + Math.abs(event.clientY - drag.startY) > 4) draggedRef.current = true;
+    const maxX = Math.max(8, window.innerWidth - drag.width - 8);
+    const maxY = Math.max(8, window.innerHeight - drag.height - 8);
     setPosition({ x: Math.min(maxX, Math.max(8, event.clientX - drag.offsetX)), y: Math.min(maxY, Math.max(8, event.clientY - drag.offsetY)) });
   }
 
@@ -48,7 +61,6 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
     if (!drag || drag.pointerId !== event.pointerId) return;
     dragRef.current = null;
     setIsDragging(false);
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
     window.setTimeout(() => { draggedRef.current = false; }, 0);
   }
 
@@ -125,9 +137,6 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
         type="button"
         className="diana-chat__launcher"
         onPointerDown={startDrag}
-        onPointerMove={moveDrag}
-        onPointerUp={endDrag}
-        onPointerCancel={endDrag}
         onClick={() => { if (!draggedRef.current) setIsOpen((open) => !open); }}
         aria-expanded={isOpen}
         title={isMua ? `Buka chat ${assistantName}` : "Klik untuk chat, seret untuk memindahkan"}

@@ -1,1 +1,12 @@
-export default function Contact() { return <section id="contact" className="mx-auto max-w-6xl px-5 py-20 md:px-8"><div className="glass rounded-3xl p-8 md:p-12"><p className="text-xs font-black uppercase tracking-[.28em] text-neon">Contact</p><div className="mt-5 grid gap-8 md:grid-cols-[1fr_.6fr]"><div><h2 className="text-3xl font-black leading-tight text-white md:text-5xl">Let&apos;s build something.</h2><p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">Untuk diskusi project, kerja sama, atau informasi program Extreme Studios, hubungi kami melalui WhatsApp.</p></div><div className="border-l-0 border-white/10 md:border-l md:pl-8"><p className="font-black text-white">EXTREME STUDIOS</p><p className="mt-2 text-sm text-slate-400">AI Engineering & Software Development</p><p className="mt-6 text-sm text-slate-400">Fajar · 089677523666</p><a href="https://wa.me/6289677523666" target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-xl bg-neon px-5 py-3 font-black text-ink transition hover:bg-lime-300">Chat via WhatsApp</a></div></div></div></section>; }
+export default function Contact() {
+  return <section id="contact" className="contact-scene">
+    <div className="contact-scene__bridge" aria-hidden="true"><span /><span /><span /></div>
+    <div className="contact-scene__wrap">
+      <p className="contact-scene__signal"><span>05</span> / FINAL SIGNAL / START A PROJECT</p>
+      <div className="contact-scene__panel">
+        <div className="contact-scene__copy"><p>Contact</p><h2>Let&apos;s build<br />something.</h2><span className="contact-scene__rule" /><p>Untuk diskusi project, kerja sama, atau informasi program Extreme Studios, hubungi kami melalui WhatsApp.</p></div>
+        <div className="contact-scene__details"><small>EXTREME STUDIOS / LIVE</small><strong>AI Engineering &amp;<br />Software Development</strong><span>Fajar · 089677523666</span><a href="https://wa.me/6289677523666" target="_blank" rel="noreferrer">Chat via WhatsApp <b>↗</b></a></div>
+      </div>
+    </div>
+  </section>;
+}

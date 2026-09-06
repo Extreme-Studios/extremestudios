@@ -1,7 +1,18 @@
-function AiCore() {
-  return <div className="ai-core" aria-hidden="true"><div className="ai-grid" /><div className="ai-orbit orbit-one" /><div className="ai-orbit orbit-two" /><div className="ai-cube"><img src="/generated-ai-core.png" alt="" /></div><div className="ai-panel panel-code">&lt;/&gt;<i /><i /><i /></div><div className="ai-panel panel-brain">◌</div></div>;
+function CinematicStage() {
+  return <div className="cinematic-stage" aria-hidden="true">
+    <div className="cinematic-stage__aurora" />
+    <div className="cinematic-stage__mist cinematic-stage__mist--one" />
+    <div className="cinematic-stage__mist cinematic-stage__mist--two" />
+    <div className="cinematic-stage__stars">{Array.from({ length: 18 }, (_, index) => <i key={index} />)}</div>
+    <div className="cinematic-stage__portal"><span /><span /><span /></div>
+    <div className="cinematic-stage__core"><b>ES</b><small>BUILD / 01</small></div>
+    <div className="cinematic-card cinematic-card--ai"><small>01 / AI SYSTEMS</small><strong>INTELLIGENT<br />SYSTEMS</strong><i>↗</i></div>
+    <div className="cinematic-card cinematic-card--web"><small>02 / WEB DEVELOPMENT</small><strong>DIGITAL<br />EXPERIENCES</strong><i>◌</i></div>
+    <div className="cinematic-card cinematic-card--android"><small>03 / ANDROID</small><strong>MOBILE<br />PRODUCTS</strong><i>⌁</i></div>
+    <div className="cinematic-stage__floor" />
+  </div>;
 }
 
 export default function Hero() {
-  return <section id="home" className="hero-shell"><div className="mx-auto grid min-h-[650px] max-w-6xl items-center gap-10 px-5 py-16 md:grid-cols-[.95fr_1.05fr] md:px-8 md:py-20"><div><p className="eyebrow">Digital Product Engineering</p><h1 className="mt-7 text-5xl font-black uppercase leading-[.9] tracking-[.08em] text-white md:text-7xl">Build<br /><span>with</span><br />Clarity.</h1><p className="mt-4 text-xl font-medium text-slate-100 md:text-2xl">AI systems, web development, software, and Android products.</p><div className="my-6 h-px w-14 bg-cyan" /><h2 className="max-w-md text-2xl font-medium leading-tight text-white md:text-3xl">Dari ide menjadi produk digital yang siap digunakan.</h2><p className="mt-5 max-w-lg leading-7 text-slate-400">Kami membantu merancang, membangun, dan menyempurnakan AI, website, software, aplikasi Android, serta sistem digital yang memberi dampak nyata.</p><div className="mt-8 flex flex-wrap gap-4"><a href="#profile" className="button-primary">Cara kami bekerja <b>&rarr;</b></a><a href="#projects" className="button-secondary">Lihat Project <b>&rarr;</b></a></div></div><AiCore /></div></section>;
+  return <section id="home" className="hero-shell hero-shell--cinematic"><div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-6 px-5 py-28 md:grid-cols-[.86fr_1.14fr] md:px-8 md:py-28"><div className="hero-copy"><p className="eyebrow">Extreme Studios / Digital Product Engineering</p><p className="hero-copy__index">01 — BUILD WITH INTENTION</p><h1>Build<br /><span>with</span><br />Clarity.</h1><p className="hero-copy__lead">AI systems, web development, software, and Android products.</p><div className="hero-copy__rule" /><h2>Dari ide menjadi produk digital yang siap digunakan.</h2><p className="hero-copy__body">Kami membantu merancang, membangun, dan menyempurnakan AI, website, software, aplikasi Android, serta sistem digital yang memberi dampak nyata.</p><div className="mt-8 flex flex-wrap gap-4"><a href="#profile" className="button-primary">Cara kami bekerja <b>→</b></a><a href="#projects" className="button-secondary">Lihat Project <b>→</b></a></div></div><CinematicStage /></div><div className="hero-shell__scroll">SCROLL TO EXPLORE <span>↓</span></div></section>;
 }

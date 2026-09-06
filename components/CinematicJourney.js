@@ -23,6 +23,18 @@ function FloatingSystem({ type }) {
   return <div className="journey-system journey-system--program"><div className="journey-program-image"><img src="/umkm-naik-kelas-workshop.png" alt="" /></div><div className="journey-program-chip journey-program-chip--one"><small>AI EDUCATION</small><b>AI Engineer<br />Basic</b></div><div className="journey-program-chip journey-program-chip--two"><small>UMKM WORKSHOP</small><b>Naik Kelas<br />Digital</b></div></div>;
 }
 
+function NeuralSpine() {
+  return <div className="journey-neural-spine" aria-hidden="true">
+    <svg viewBox="0 0 240 1000" preserveAspectRatio="none">
+      <defs><linearGradient id="spineGlow" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#75eeff" /><stop offset=".5" stopColor="#9c75ff" /><stop offset="1" stopColor="#ec9aff" /></linearGradient></defs>
+      <path className="journey-neural-spine__shadow" d="M120 0 C62 72 182 130 120 200 S66 324 120 400 S185 515 120 600 S64 728 120 800 S180 915 120 1000" />
+      <path className="journey-neural-spine__line" d="M120 0 C62 72 182 130 120 200 S66 324 120 400 S185 515 120 600 S64 728 120 800 S180 915 120 1000" />
+      <path className="journey-neural-spine__branch" d="M120 101 C84 105 60 121 20 127 M120 201 C157 205 187 223 224 231 M120 401 C79 408 55 426 18 433 M120 601 C160 611 191 626 225 637 M120 801 C81 813 55 830 17 838" />
+      {[100, 200, 400, 600, 800].map((point) => <circle className="journey-neural-spine__node" cx="120" cy={point} r="9" key={point} />)}
+    </svg>
+  </div>;
+}
+
 const stages = [
   { id: "profile", kicker: "01 / EXTREME STUDIOS", title: <>Teknologi yang<br /><em>punya arah.</em></>, body: "Kami mengubah ide menjadi AI, website, software, aplikasi Android, dan produk digital yang siap dipakai.", link: ["Lihat Profile Lengkap", "/profile"], type: "studio" },
   { id: "services", kicker: "02 / WHAT WE BUILD", title: <>Bukan hanya<br /><em>tampilan.</em></>, body: "Setiap produk dibangun untuk membantu bisnis, komunitas, dan kreator bekerja lebih jelas, lebih cepat, dan lebih siap berkembang.", link: ["Lihat Semua Layanan", "/#contact"], type: "capabilities" },
@@ -78,10 +90,11 @@ export default function CinematicJourney() {
   }, []);
 
   return <section className="cinematic-journey" aria-label="Extreme Studios journey">
+    <NeuralSpine />
     <div className="cinematic-journey__rail"><span /><span /><span /><span /><span /></div>
     {stages.map((stage, index) => <article id={stage.id} data-index={index} ref={(element) => { refs.current[index] = element; }} style={{ "--scene-enter": index === 0 ? 1 : 0, "--scene-exit": 0, "--scene-travel": index === 0 ? 0.5 : 0 }} className={`journey-stage ${active === index ? "journey-stage--active" : ""}`} key={stage.id}>
       <div className="journey-stage__copy"><p>{stage.kicker}</p><h2>{stage.title}</h2><span className="journey-stage__number">0{index + 1}</span><div className="journey-stage__line" /><p className="journey-stage__body">{stage.body}</p><a href={stage.link[1]} className="journey-stage__link">{stage.link[0]} <b>→</b></a></div>
-      <div className="journey-stage__visual"><div className="journey-stage__warp" aria-hidden="true"><i /><i /><i /></div><FloatingSystem type={stage.type} /></div>
+      <div className="journey-stage__visual"><div className="journey-stage__orbit" aria-hidden="true"><i /><i /><i /></div><div className="journey-stage__warp" aria-hidden="true"><i /><i /><i /></div><FloatingSystem type={stage.type} /></div>
     </article>)}
   </section>;
 }

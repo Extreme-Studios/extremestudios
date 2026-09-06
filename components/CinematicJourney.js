@@ -11,15 +11,21 @@ const capabilityCards = [
 
 const projects = [
   ["DIANA", "Smart Assistant", "AI Engineering", "/generated-diana-ai.png"],
-  ["GUITAR FX", "Android Product", "Audio Technology", "/featured/guitar-fx.png"],
-  ["MOVIE HUB", "Mobile Product", "Entertainment", "/featured/movie-hub.png"]
+  ["GUITAR FX", "Android Product", "Audio Technology", "/featured/guitar-fx.png"]
+];
+
+const parfiScreens = [
+  ["/project-parfi-jatim/parfi-home.png", "Beranda website PARFI Jatim"],
+  ["/project-parfi-jatim/parfi-news.png", "Portal berita PARFI Jatim"],
+  ["/project-parfi-jatim/parfi-agenda.png", "Agenda kegiatan organisasi"],
+  ["/project-parfi-jatim/parfi-film-gallery.png", "Galeri film PARFI Jatim"]
 ];
 
 function FloatingSystem({ type }) {
   if (type === "studio") return <div className="journey-system journey-system--studio"><span className="journey-orbit journey-orbit--one" /><span className="journey-orbit journey-orbit--two" /><div className="journey-system__core">ES<small>STUDIO</small></div><div className="journey-note journey-note--top">IDEA → ENGINEERING</div><div className="journey-note journey-note--bottom">PRODUCT / LIVE</div></div>;
   if (type === "capabilities") return <div className="journey-system journey-system--capabilities">{capabilityCards.map(([index, title, body, icon], cardIndex) => <article className={`journey-capability journey-capability--${cardIndex + 1}`} key={title}><small>{index}</small><i>{icon}</i><strong>{title}</strong><span>{body}</span></article>)}</div>;
   if (type === "web") return <div className="journey-system journey-system--web"><div className="journey-browser"><div><i /><i /><i /><span>yourbrand.com</span></div><section><small>YOUR NEXT WEBSITE</small><b>MAKE IT<br />MEMORABLE.</b><span>Strategy · Design · Build</span></section></div><div className="journey-float-panel journey-float-panel--chat"><b>Chat Assistant</b><span>Ready to help your client</span><i>●</i></div><div className="journey-float-panel journey-float-panel--price"><small>START FROM</small><b>Rp1 jt</b></div></div>;
-  if (type === "projects") return <div className="journey-system journey-system--projects">{projects.map(([label, title, category, image], cardIndex) => <article className={`journey-project journey-project--${cardIndex + 1}`} key={label}><img src={image} alt="" /><div><small>{category}</small><b>{label}<br />{title}</b></div></article>)}</div>;
+  if (type === "projects") return <div className="journey-system journey-system--projects"><a href="/projects/web-parfi-jatim" className="journey-parfi-showcase"><div className="journey-parfi-showcase__gallery">{parfiScreens.map(([image, alt]) => <img key={image} src={image} alt={alt} />)}</div><div className="journey-parfi-showcase__copy"><small>WEB PROJECT · ORGANIZATION PORTAL</small><b>Website Resmi<br />PARFI Jatim</b><span>Berita · Agenda · Galeri Film</span></div></a>{projects.map(([label, title, category, image], cardIndex) => <article className={`journey-project journey-project--${cardIndex + 1}`} key={label}><img src={image} alt="" /><div><small>{category}</small><b>{label}<br />{title}</b></div></article>)}</div>;
   return <div className="journey-system journey-system--program"><div className="journey-program-image"><img src="/umkm-naik-kelas-workshop.png" alt="" /></div><div className="journey-program-chip journey-program-chip--one"><small>AI EDUCATION</small><b>AI Engineer<br />Basic</b></div><div className="journey-program-chip journey-program-chip--two"><small>UMKM WORKSHOP</small><b>Naik Kelas<br />Digital</b></div></div>;
 }
 
@@ -40,7 +46,7 @@ const stages = [
   { id: "profile", kicker: "01 / EXTREME STUDIOS", title: <>Teknologi yang<br /><em>punya arah.</em></>, body: "Kami mengubah ide menjadi AI, website, software, aplikasi Android, dan produk digital yang siap dipakai.", link: ["Lihat Profile Lengkap", "/profile"], type: "studio" },
   { id: "services", kicker: "02 / WHAT WE BUILD", title: <>Bukan hanya<br /><em>tampilan.</em></>, body: "Setiap produk dibangun untuk membantu bisnis, komunitas, dan kreator bekerja lebih jelas, lebih cepat, dan lebih siap berkembang.", link: ["Lihat Semua Layanan", "/#contact"], type: "capabilities" },
   { id: "web-builder", kicker: "03 / WEB DEVELOPMENT", title: <>Website yang<br /><em>bekerja.</em></>, body: "Landing page, website interaktif, marketplace, web chatbot, dan web application untuk membuat brand lebih dipercaya dan lebih mudah dihubungi.", link: ["Konsultasikan Website", "/#contact"], type: "web" },
-  { id: "projects", kicker: "04 / SELECTED WORK", title: <>Produk nyata.<br /><em>Dampak nyata.</em></>, body: "Dari AI assistant sampai aplikasi Android dan platform digital, setiap project dibuat untuk menyelesaikan kebutuhan yang jelas.", link: ["Lihat Semua Project", "/projects"], type: "projects" },
+  { id: "projects", kicker: "04 / SELECTED WORK", title: <>Produk nyata.<br /><em>Dampak nyata.</em></>, body: "Dari website organisasi responsif sampai AI assistant dan aplikasi Android, setiap project dibuat untuk menyelesaikan kebutuhan yang jelas.", link: ["Lihat Semua Project", "/projects"], type: "projects" },
   { id: "programs", kicker: "05 / LEARN & GROW", title: <>Belajar untuk<br /><em>bergerak maju.</em></>, body: "Program AI Engineer Basic dan Workshop UMKM Naik Kelas membantu manusia dan bisnis memanfaatkan teknologi secara praktis.", link: ["Tanya Informasi Program", "/#contact"], type: "program" }
 ];
 

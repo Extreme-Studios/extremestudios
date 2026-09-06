@@ -203,12 +203,12 @@ export const apps = [
   {
     slug: "web-parfi-jatim",
     title: "Web PARFI Jatim",
-    category: "Web Platform",
+    category: "Web Project · Organization Portal",
     group: "other",
-    mockup: "/project-mockups/streaming-platform.png",
-    desc: "Website platform untuk informasi, karya, dan ekosistem perfilman PARFI Jawa Timur.",
-    longDesc: "Web PARFI Jatim menjadi ruang digital untuk menampilkan informasi dan karya perfilman daerah.",
-    points: ["Organization profile", "Film information", "Content showcase", "Responsive web"]
+    mockup: "/project-parfi-jatim/parfi-home.png",
+    desc: "Website resmi PARFI Jawa Timur untuk profil organisasi, berita, agenda, dan galeri film. Ini adalah project website, bukan aplikasi.",
+    longDesc: "Web PARFI Jatim adalah portal organisasi berbasis website yang dirancang untuk menampilkan informasi, agenda, berita, dan karya perfilman Jawa Timur dalam satu pengalaman digital yang responsif.",
+    points: ["Website organisasi", "Portal berita", "Agenda kegiatan", "Galeri film", "Responsive web"]
   },
   {
     slug: "web-store-chat-assistant",

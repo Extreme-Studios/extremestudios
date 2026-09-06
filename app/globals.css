@@ -229,7 +229,7 @@ a {
 /* One persistent WebGL particle world for the complete homepage. It stays mounted
    while Hero, the scroll journey, Contact, and Footer pass beneath it. */
 .home-particle-world { position:relative; isolation:isolate; background:#03040c; }
-.global-particle-field { position:fixed; z-index:6; inset:0; display:block; width:100vw; height:100vh; pointer-events:none; opacity:.44; mix-blend-mode:screen; filter:saturate(1.16) contrast(1.04); }
+.global-particle-field { position:fixed; z-index:6; inset:0; display:block; width:100vw; height:100vh; pointer-events:none; opacity:.78; mix-blend-mode:screen; filter:saturate(1.18) contrast(1.06); }
 .global-particle-field[data-failed="true"] { background:radial-gradient(circle at 72% 37%,rgba(121,85,255,.15),transparent 30%),radial-gradient(circle at 28% 68%,rgba(48,218,255,.1),transparent 24%); }
 .home-particle-world .site-nav,.home-particle-world .diana-chat { position:relative; z-index:8; }
 @media(max-width:720px){.global-particle-field{opacity:.34}}

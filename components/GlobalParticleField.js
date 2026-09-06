@@ -26,13 +26,13 @@ void main() {
 
   float orbit = time * .2 + uScroll * 8.4;
   point.xz = rotate2d(orbit * .58) * point.xz;
-  point.xy = rotate2d(-orbit * .16 + uPointer.x * .12) * point.xy;
-  point.yz = rotate2d(uPointer.y * .08 + sin(time * .35) * .07) * point.yz;
+  point.xy = rotate2d(-orbit * .16 + uPointer.x * .32) * point.xy;
+  point.yz = rotate2d(uPointer.y * .22 + sin(time * .35) * .07) * point.yz;
   point *= .9 + .17 * sin(uScroll * 18.85 + aPosition.z * .65);
 
-  vec3 camera = vec3(uPointer.x * .34 + sin(uScroll * 7.0) * .2, -uPointer.y * .22 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
+  vec3 camera = vec3(uPointer.x * .74 + sin(uScroll * 7.0) * .2, -uPointer.y * .52 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
   vec3 view = point - camera;
-  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .045) * view.xz;
+  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .15) * view.xz;
   view.xy = rotate2d(sin(uScroll * 11.0) * .045) * view.xy;
 
   float depth = max(.28, -view.z);
@@ -88,16 +88,30 @@ function createProgram(gl) {
 function makeParticles(count) {
   const positions = new Float32Array(count * 3);
   const colors = new Float32Array(count * 3);
-  const palette = [[.35, .93, 1], [.61, .34, 1], [1, .36, .78], [.52, 1, .78]];
+  const palette = [[1.0, .18, .70], [.68, .22, 1.0], [.20, .78, 1.0], [1.0, .55, .92]];
   for (let index = 0; index < count; index += 1) {
     const offset = index * 3;
-    const chance = Math.random();
-    const angle = Math.random() * Math.PI * 2;
-    const tilt = (Math.random() - .5) * Math.PI;
-    const radius = chance < .56 ? 1.05 + Math.random() * 1.15 : .55 + Math.pow(Math.random(), .56) * 2.25;
-    positions[offset] = Math.cos(angle) * Math.cos(tilt) * radius + (Math.random() - .5) * .1;
-    positions[offset + 1] = Math.sin(tilt) * radius * .8 + (Math.random() - .5) * .1;
-    positions[offset + 2] = Math.sin(angle) * Math.cos(tilt) * radius + (Math.random() - .5) * .1;
+    const chance = Math.random(), angle = Math.random() * Math.PI * 2, tilt = (Math.random() - .5) * Math.PI;
+    let x, y, z;
+    if (chance < .48) {
+      const outer = 1.25 + Math.random() * .7, inner = (Math.random() - .5) * .72;
+      x = (outer + inner * Math.cos(tilt)) * Math.cos(angle);
+      y = inner * Math.sin(tilt) * 1.25;
+      z = (outer + inner * Math.cos(tilt)) * Math.sin(angle);
+    } else if (chance < .82) {
+      const radius = .65 + Math.pow(Math.random(), .55) * 1.9;
+      x = Math.cos(angle) * Math.cos(tilt) * radius;
+      y = Math.sin(tilt) * radius * .78;
+      z = Math.sin(angle) * Math.cos(tilt) * radius;
+    } else {
+      const radius = 1.0 + Math.random() * 2.6;
+      x = Math.cos(angle) * radius;
+      y = (Math.random() - .5) * 2.4;
+      z = Math.sin(angle) * radius;
+    }
+    positions[offset] = x + (Math.random() - .5) * .09;
+    positions[offset + 1] = y + (Math.random() - .5) * .09;
+    positions[offset + 2] = z + (Math.random() - .5) * .09;
     const color = palette[(Math.random() * palette.length) | 0];
     const intensity = .72 + Math.random() * .42;
     colors[offset] = Math.min(1, color[0] * intensity);
@@ -120,7 +134,7 @@ export default function GlobalParticleField() {
 
     const mobile = matchMedia("(max-width: 720px)").matches;
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const count = reduced ? 1100 : mobile ? 2800 : 6200;
+    const count = reduced ? 1400 : mobile ? 3600 : 7600;
     const particles = makeParticles(count);
     gl.useProgram(program);
     gl.enable(gl.BLEND);

@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 function CinematicStage() {
   return <div className="cinematic-stage" aria-hidden="true">
     <div className="cinematic-stage__aurora" />
@@ -14,5 +18,24 @@ function CinematicStage() {
 }
 
 export default function Hero() {
-  return <section id="home" className="hero-shell hero-shell--cinematic"><div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-6 px-5 py-28 md:grid-cols-[.86fr_1.14fr] md:px-8 md:py-28"><div className="hero-copy"><p className="eyebrow">Extreme Studios / Digital Product Engineering</p><p className="hero-copy__index">01 — BUILD WITH INTENTION</p><h1>Build<br /><span>with</span><br />Clarity.</h1><p className="hero-copy__lead">AI systems, web development, software, and Android products.</p><div className="hero-copy__rule" /><h2>Dari ide menjadi produk digital yang siap digunakan.</h2><p className="hero-copy__body">Kami membantu merancang, membangun, dan menyempurnakan AI, website, software, aplikasi Android, serta sistem digital yang memberi dampak nyata.</p><div className="mt-8 flex flex-wrap gap-4"><a href="#profile" className="button-primary">Cara kami bekerja <b>→</b></a><a href="#projects" className="button-secondary">Lihat Project <b>→</b></a></div></div><CinematicStage /></div><div className="hero-shell__scroll">SCROLL TO EXPLORE <span>↓</span></div></section>;
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+    let frame = 0;
+    const paint = () => {
+      const bounds = section.getBoundingClientRect();
+      const exit = Math.max(0, Math.min(1, -bounds.top / Math.max(1, bounds.height * .72)));
+      section.style.setProperty("--hero-exit", exit.toFixed(4));
+      frame = 0;
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(paint); };
+    paint();
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    return () => { removeEventListener("scroll", onScroll); removeEventListener("resize", onScroll); if (frame) cancelAnimationFrame(frame); };
+  }, []);
+
+  return <section id="home" ref={sectionRef} style={{ "--hero-exit": 0 }} className="hero-shell hero-shell--cinematic"><div className="mx-auto grid min-h-[720px] max-w-6xl items-center gap-6 px-5 py-28 md:grid-cols-[.86fr_1.14fr] md:px-8 md:py-28"><div className="hero-copy"><p className="eyebrow">Extreme Studios / Digital Product Engineering</p><p className="hero-copy__index">01 — BUILD WITH INTENTION</p><h1>Build<br /><span>with</span><br />Clarity.</h1><p className="hero-copy__lead">AI systems, web development, software, and Android products.</p><div className="hero-copy__rule" /><h2>Dari ide menjadi produk digital yang siap digunakan.</h2><p className="hero-copy__body">Kami membantu merancang, membangun, dan menyempurnakan AI, website, software, aplikasi Android, serta sistem digital yang memberi dampak nyata.</p><div className="mt-8 flex flex-wrap gap-4"><a href="#profile" className="button-primary">Cara kami bekerja <b>→</b></a><a href="#projects" className="button-secondary">Lihat Project <b>→</b></a></div></div><CinematicStage /></div><div className="hero-shell__scroll">SCROLL TO EXPLORE <span>↓</span></div></section>;
 }

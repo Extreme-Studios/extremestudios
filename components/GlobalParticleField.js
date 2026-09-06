@@ -26,13 +26,13 @@ void main() {
 
   float orbit = time * .2 + uScroll * 8.4;
   point.xz = rotate2d(orbit * .58) * point.xz;
-  point.xy = rotate2d(-orbit * .16 + uPointer.x * .32) * point.xy;
-  point.yz = rotate2d(uPointer.y * .22 + sin(time * .35) * .07) * point.yz;
+  point.xy = rotate2d(-orbit * .16 + uPointer.x * .56) * point.xy;
+  point.yz = rotate2d(uPointer.y * .36 + sin(time * .35) * .07) * point.yz;
   point *= .9 + .17 * sin(uScroll * 18.85 + aPosition.z * .65);
 
-  vec3 camera = vec3(uPointer.x * .74 + sin(uScroll * 7.0) * .2, -uPointer.y * .52 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
+  vec3 camera = vec3(uPointer.x * 1.12 + sin(uScroll * 7.0) * .2, -uPointer.y * .78 + cos(uScroll * 5.0) * .12, 5.0 - sin(uScroll * 15.7) * .34);
   vec3 view = point - camera;
-  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .15) * view.xz;
+  view.xz = rotate2d(sin(uScroll * 8.2) * .18 + uPointer.x * .26) * view.xz;
   view.xy = rotate2d(sin(uScroll * 11.0) * .045) * view.xy;
 
   float depth = max(.28, -view.z);
@@ -41,9 +41,9 @@ void main() {
   gl_Position = vec4(projected, 0.0, 1.0);
 
   float near = clamp(1.13 - depth / 8.0, .12, 1.0);
-  gl_PointSize = clamp(3.7 * uPixelRatio * (1.0 / depth) * (1.0 + near), 1.0, 11.0 * uPixelRatio);
+  gl_PointSize = clamp(5.1 * uPixelRatio * (1.0 / depth) * (1.0 + near), 1.0, 14.0 * uPixelRatio);
   vColor = aColor * (.72 + near * .66);
-  vAlpha = near * .7;
+  vAlpha = near * .94;
 }
 `;
 

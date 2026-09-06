@@ -235,7 +235,8 @@ a {
 .home-particle-world { position:relative; isolation:isolate; background:#03040c; }
 .global-particle-field { position:fixed; z-index:6; inset:0; display:block; width:100vw; height:100vh; pointer-events:none; opacity:.96; mix-blend-mode:screen; filter:saturate(1.35) contrast(1.14) brightness(1.12); }
 .global-particle-field[data-failed="true"] { background:radial-gradient(circle at 72% 37%,rgba(121,85,255,.15),transparent 30%),radial-gradient(circle at 28% 68%,rgba(48,218,255,.1),transparent 24%); }
-.home-particle-world .site-nav,.home-particle-world .diana-chat { position:relative; z-index:8; }
+.home-particle-world .site-nav { position:relative; z-index:8; }
+.home-particle-world .diana-chat { position:fixed; z-index:60; }
 @media(max-width:720px){.global-particle-field{opacity:.34}}
 @media(prefers-reduced-motion:reduce){.global-particle-field{opacity:.2}}
 .studio-screen { position:relative; min-height:260px; overflow:hidden; border:1px solid rgba(38,210,237,.26); border-radius:.5rem; background:linear-gradient(135deg,#061a2c,#020b15); box-shadow: inset 0 0 70px rgba(0,133,188,.16); }

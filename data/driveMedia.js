@@ -29,5 +29,9 @@ const driveMediaMap = {
 };
 
 export function driveMedia(path) {
-  return driveMediaMap[path] || path;
+  const url = driveMediaMap[path];
+  if (!url) return path;
+
+  const fileId = url.split("id=")[1];
+  return `https://lh3.googleusercontent.com/d/${fileId}`;
 }

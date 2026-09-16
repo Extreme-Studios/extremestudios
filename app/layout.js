@@ -4,6 +4,9 @@ import AudioFeedback from "@/components/AudioFeedback";
 export const metadata = {
   title: "Extreme Studios | AI, Web & Software Development",
   description: "Extreme Studios membangun Artificial Intelligence, website, software, aplikasi Android, dan solusi digital yang berdampak nyata.",
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined
+  },
   openGraph: {
     title: "Extreme Studios",
     description: "AI, Web & Software Development",

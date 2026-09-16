@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { driveMedia } from "../../data/driveMedia";
 
 const disciplines = [
   ["AI Engineering", "Pengembangan sistem dan aplikasi yang memanfaatkan Artificial Intelligence untuk otomatisasi, pemrosesan informasi, interaksi pengguna, dan intelligent system.", "AI Assistant · AI Integration · Local AI / LLM · AI Automation"],
@@ -17,15 +18,15 @@ const process = [["IDE", "Setiap project dimulai dari sebuah ide atau permasalah
 
 const projects = [
   ["DIANA Smart Assistant AI", "AI Engineering · Desktop Application", "Asisten AI personal berbasis Electron untuk keluarga, dengan integrasi Pixi.js dan Live2D.", "diana"],
-  ["Extreme Studios Guitar FX", "Android · Audio Technology", "Aplikasi Guitar FX Android yang dibangun dengan Kotlin, Jetpack Compose, serta komponen C++17.", "/featured/guitar-fx.png"],
-  ["Movie HUB", "Android · Entertainment", "Aplikasi Android untuk pengalaman informasi dan koleksi tontonan, menggunakan Kotlin, Room, dan Coroutines.", "/featured/movie-hub.png"],
-  ["Extreme Studios HUB", "Software Distribution", "Pusat distribusi aplikasi untuk mengelola katalog APK dan software PC dalam satu tempat.", "/mockups/extreme-studios-hub.png"],
-  ["Auto Cut Video", "Desktop Automation", "Software desktop untuk membantu pemotongan video highlight dan ekspor XML untuk workflow editing.", "/mockups/auto-cut-video.png"],
-  ["Portal Arek Musik", "Web Platform", "Platform streaming musik untuk band indie mempublikasikan karya dan membangun identitas digital.", "/mockups/portal-arek-musik.png"]
+  ["Extreme Studios Guitar FX", "Android · Audio Technology", "Aplikasi Guitar FX Android yang dibangun dengan Kotlin, Jetpack Compose, serta komponen C++17.", driveMedia("/featured/guitar-fx.png")],
+  ["Movie HUB", "Android · Entertainment", "Aplikasi Android untuk pengalaman informasi dan koleksi tontonan, menggunakan Kotlin, Room, dan Coroutines.", driveMedia("/featured/movie-hub.png")],
+  ["Extreme Studios HUB", "Software Distribution", "Pusat distribusi aplikasi untuk mengelola katalog APK dan software PC dalam satu tempat.", driveMedia("/mockups/extreme-studios-hub.png")],
+  ["Auto Cut Video", "Desktop Automation", "Software desktop untuk membantu pemotongan video highlight dan ekspor XML untuk workflow editing.", driveMedia("/mockups/auto-cut-video.png")],
+  ["Portal Arek Musik", "Web Platform", "Platform streaming musik untuk band indie mempublikasikan karya dan membangun identitas digital.", driveMedia("/mockups/portal-arek-musik.png")]
 ];
 
-function CoreVisual({ compact = false }) { return <div className={`profile-core ${compact ? "profile-core--compact" : ""}`} aria-hidden="true"><div className="profile-core__grid" /><div className="profile-core__ring" /><div className="profile-core__cube"><img src="/generated-ai-core.png" alt="" /></div><div className="profile-core__chip">AI<br /><span>ENGINEERING</span></div></div>; }
-function DianaVisual() { return <div className="profile-diana"><img src="/generated-diana-ai.png" alt="Visual DIANA Smart Assistant AI" /></div>; }
+function CoreVisual({ compact = false }) { return <div className={`profile-core ${compact ? "profile-core--compact" : ""}`} aria-hidden="true"><div className="profile-core__grid" /><div className="profile-core__ring" /><div className="profile-core__cube"><img src={driveMedia("/generated-ai-core.png")} alt="" /></div><div className="profile-core__chip">AI<br /><span>ENGINEERING</span></div></div>; }
+function DianaVisual() { return <div className="profile-diana"><img src={driveMedia("/generated-diana-ai.png")} alt="Visual DIANA Smart Assistant AI" /></div>; }
 
 export const metadata = { title: "Profile | Extreme Studios", description: "Company profile Extreme Studios: AI Engineering & Software Development." };
 

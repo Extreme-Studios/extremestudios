@@ -3,7 +3,7 @@ function ProgramVisual() {
 }
 
 function UmkmVisual() {
-  return <div className="program-visual program-visual--umkm"><img src="/umkm-naik-kelas-workshop.png" alt="Workshop UMKM Naik Kelas" /></div>;
+  return <div className="program-visual program-visual--umkm"><img src={driveMedia("/umkm-naik-kelas-workshop.png")} alt="Workshop UMKM Naik Kelas" /></div>;
 }
 
 export default function Programs() {
@@ -23,3 +23,4 @@ export default function Programs() {
     </div>
   </section>;
 }
+import { driveMedia } from "../data/driveMedia";

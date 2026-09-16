@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { driveMedia } from "../data/driveMedia";
 
 export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
   const isMua = vertical === "mua";
@@ -106,7 +107,7 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
         <section className="diana-chat__panel" onPointerDown={(event) => startDrag(event, "panel")} aria-live="polite">
           <header className="diana-chat__header">
             <div className="diana-chat__identity">
-              <img className="diana-chat__avatar" src="/diana-cs-avatar.png" alt={`Avatar ${assistantName}`} />
+              <img className="diana-chat__avatar" src={driveMedia("/diana-cs-avatar.png")} alt={`Avatar ${assistantName}`} />
               <span><strong>{assistantName}</strong><small><i /> Online assistant</small></span>
             </div>
             <button type="button" onClick={() => setIsOpen(false)} aria-label="Tutup chat DIANA">×</button>
@@ -145,7 +146,7 @@ export default function DianaChat({ vertical = "", displayName = "DIANA" }) {
         title={isMua ? `Buka chat ${assistantName}` : "Klik untuk chat, seret untuk memindahkan"}
       >
         <span className="diana-chat__pulse" />
-        <img className="diana-chat__launcher-icon" src="/diana-cs-avatar.png" alt="" />
+        <img className="diana-chat__launcher-icon" src={driveMedia("/diana-cs-avatar.png")} alt="" />
         <span><strong>{assistantName}</strong><small>AI assistant</small></span>
       </button>}
     </aside>

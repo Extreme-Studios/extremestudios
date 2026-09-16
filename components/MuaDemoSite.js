@@ -4,15 +4,15 @@ import { useState } from "react";
 import DianaChat from "@/components/DianaChat";
 
 const looks = [
-  ["Paes Ageng", "Rias pengantin Jawa yang anggun", "/demo-mua/makeup-session.png"],
-  ["Kebaya Akad", "Elegan, hangat, dan timeless", "/demo-mua/bridal-fashion.png"],
-  ["Hijab Modern", "Clean, graceful, tetap personal", "/demo-mua/bridal-fashion.png"],
-  ["Pelaminan Joglo", "Dekorasi lokal yang berkarakter", "/demo-mua/wedding-decor.png"]
+  ["Paes Ageng", "Rias pengantin Jawa yang anggun", driveMedia("/demo-mua/makeup-session.png")],
+  ["Kebaya Akad", "Elegan, hangat, dan timeless", driveMedia("/demo-mua/bridal-fashion.png")],
+  ["Hijab Modern", "Clean, graceful, tetap personal", driveMedia("/demo-mua/bridal-fashion.png")],
+  ["Pelaminan Joglo", "Dekorasi lokal yang berkarakter", driveMedia("/demo-mua/wedding-decor.png")]
 ];
 const gallery = [
-  ["Rias Paes Jawa", "Proses makeup pengantin yang tenang, rapi, dan personal.", "/demo-mua/makeup-session.png", "Proses merias"],
-  ["Koleksi Kebaya & Gaun", "Pilihan kebaya, gaun, dan look bridal yang lebih beragam.", "/demo-mua/bridal-fashion.png", "Baju pernikahan"],
-  ["Pelaminan Jawa", "Inspirasi gebyok, janur, bunga, dan dekorasi lokal.", "/demo-mua/wedding-decor.png", "Pilihan dekorasi"]
+  ["Rias Paes Jawa", "Proses makeup pengantin yang tenang, rapi, dan personal.", driveMedia("/demo-mua/makeup-session.png"), "Proses merias"],
+  ["Koleksi Kebaya & Gaun", "Pilihan kebaya, gaun, dan look bridal yang lebih beragam.", driveMedia("/demo-mua/bridal-fashion.png"), "Baju pernikahan"],
+  ["Pelaminan Jawa", "Inspirasi gebyok, janur, bunga, dan dekorasi lokal.", driveMedia("/demo-mua/wedding-decor.png"), "Pilihan dekorasi"]
 ];
 const packages = [
   ["The Intimate", "Rp1.250.000", "Untuk akad yang intimate", ["Makeup akad", "Hijab styling", "Touch-up 1x"]],
@@ -36,3 +36,4 @@ export default function MuaDemoSite() {
     <footer className="demo-mua__footer"><a href="/mua">Website MUA + Chat Assistant oleh Extreme Studios</a><span>© 2026 Lumina Makeup Artist · Demo</span></footer>
   </main>;
 }
+import { driveMedia } from "../data/driveMedia";

@@ -1,10 +1,12 @@
+import { driveMedia } from "./driveMedia";
+
 export const apps = [
   {
     slug: "portal-arek-musik",
     title: "Portal Arek Musik",
     category: "Indie Music Platform",
     group: "featured",
-    mockup: "/project-mockups/creative-tools.png",
+    mockup: driveMedia("/project-mockups/creative-tools.png"),
     desc: "Platform streaming musik untuk band indie agar karya mereka bisa dipublikasikan dan didengar lebih luas.",
     longDesc:
       "Portal Arek Musik dibuat sebagai tempat band indie memamerkan lagu, memperluas jangkauan pendengar, dan membangun identitas musik lokal secara digital.",
@@ -15,7 +17,7 @@ export const apps = [
     title: "Pasarku Sidokerto",
     category: "UMKM Catalog",
     group: "featured",
-    mockup: "/project-mockups/web-platform.png",
+    mockup: driveMedia("/project-mockups/web-platform.png"),
     desc: "Aplikasi katalog digital untuk pedagang UMKM agar bisa menampilkan produk dan melayani pembelian dengan lebih praktis.",
     longDesc:
       "Pasarku Sidokerto membantu pedagang lokal punya etalase digital yang rapi, mudah dibuka, dan siap diarahkan ke kontak pembelian.",
@@ -26,7 +28,7 @@ export const apps = [
     title: "Cinema Parfi Jatim",
     category: "Indie Film Streaming",
     group: "featured",
-    mockup: "/project-mockups/streaming-platform.png",
+    mockup: driveMedia("/project-mockups/streaming-platform.png"),
     desc: "Platform streaming film indie dan short movie untuk distribusi karya sineas lokal.",
     longDesc:
       "Cinema Parfi Jatim menampilkan film indie, short movie, dan trailer dalam format katalog streaming yang lebih profesional.",
@@ -37,7 +39,7 @@ export const apps = [
     title: "Cine Arena",
     category: "Student Film Platform",
     group: "featured",
-    mockup: "/project-mockups/streaming-platform.png",
+    mockup: driveMedia("/project-mockups/streaming-platform.png"),
     desc: "Platform streaming film khusus pelajar untuk menampilkan dan mengembangkan karya film siswa.",
     longDesc:
       "Cine Arena menjadi ruang presentasi karya film pelajar dengan visual yang tetap clean, modern, dan tidak terasa seperti tugas sekolah.",
@@ -48,7 +50,7 @@ export const apps = [
     title: "Lazis NU Sidokerto TV",
     category: "Dakwah Streaming",
     group: "other",
-    mockup: "/project-mockups/web-platform.png",
+    mockup: driveMedia("/project-mockups/web-platform.png"),
     desc: "Platform video dakwah berbasis streaming untuk dokumentasi dan distribusi kegiatan keagamaan.",
     longDesc:
       "Aplikasi dakwah Islam berisi video kegiatan, kajian, dan dokumentasi organisasi agar bisa disaksikan online.",
@@ -59,7 +61,7 @@ export const apps = [
     title: "GRII Sidoarjo",
     category: "Church Streaming",
     group: "other",
-    mockup: "/project-mockups/streaming-platform.png",
+    mockup: driveMedia("/project-mockups/streaming-platform.png"),
     desc: "Aplikasi streaming ibadah dan kegiatan gereja untuk akses online jemaat.",
     longDesc:
       "GRII Sidoarjo membantu jemaat mengikuti ibadah, kegiatan gereja, dan live streaming ketika berhalangan hadir.",
@@ -70,7 +72,7 @@ export const apps = [
     title: "MUGARU TV",
     category: "Streaming Platform",
     group: "other",
-    mockup: "/project-mockups/web-platform.png",
+    mockup: driveMedia("/project-mockups/web-platform.png"),
     desc: "Platform TV digital untuk menampilkan konten video dan siaran dalam pengalaman streaming yang rapi.",
     longDesc:
       "MUGARU TV dikembangkan sebagai platform streaming untuk mengelola dan menyajikan konten video secara digital.",
@@ -81,7 +83,7 @@ export const apps = [
     title: "Extreme Studios HUB",
     category: "Private App Store",
     group: "other",
-    mockup: "/project-mockups/ai-engineering.png",
+    mockup: driveMedia("/project-mockups/ai-engineering.png"),
     desc: "Platform distribusi aplikasi untuk mengelola dan menyediakan semua produk software dalam satu tempat.",
     longDesc:
       "Extreme Studios HUB menjadi katalog pusat untuk APK dan software PC buatan sendiri agar user punya satu tempat download yang jelas.",
@@ -92,7 +94,7 @@ export const apps = [
     title: "Auto Cut Video",
     category: "Desktop Automation",
     group: "other",
-    mockup: "/project-mockups/creative-tools.png",
+    mockup: driveMedia("/project-mockups/creative-tools.png"),
     desc: "Software desktop untuk memotong video secara otomatis menjadi highlight dan mengekspor XML untuk editing lanjutan.",
     longDesc:
       "Auto Cut Video mempercepat workflow editor dengan deteksi potongan highlight dan export XML untuk proses lanjut di Adobe Premiere.",
@@ -103,7 +105,7 @@ export const apps = [
     title: "Pas Photo Layout",
     category: "Photography Tool",
     group: "other",
-    mockup: "/project-mockups/creative-tools.png",
+    mockup: driveMedia("/project-mockups/creative-tools.png"),
     desc: "Aplikasi untuk menyusun banyak foto secara otomatis dalam satu layout cetak.",
     longDesc:
       "Pas Photo Layout membantu fotografer menyusun banyak pas foto ke satu kertas tanpa mengatur manual berulang-ulang.",
@@ -114,7 +116,7 @@ export const apps = [
     title: "Photography Invoice",
     category: "Invoice Utility",
     group: "other",
-    mockup: "/project-mockups/web-platform.png",
+    mockup: driveMedia("/project-mockups/web-platform.png"),
     desc: "Aplikasi invoice sederhana untuk membantu fotografer mencatat pembayaran klien.",
     longDesc:
       "Photography Invoice membantu fotografer mencatat paket foto, pembayaran, status klien, dan laporan sederhana.",
@@ -125,7 +127,7 @@ export const apps = [
     title: "AR Wizard Images",
     category: "Unity AR Prototype",
     group: "other",
-    mockup: "/project-mockups/creative-tools.png",
+    mockup: driveMedia("/project-mockups/creative-tools.png"),
     desc: "Prototype Unity untuk pengalaman augmented reality berbasis gambar dan interaksi visual.",
     longDesc: "AR Wizard Images mengeksplorasi penggunaan Unity untuk pengalaman AR dan visual interaktif.",
     points: ["Unity", "Image tracking", "AR interaction", "Visual prototype"]
@@ -135,7 +137,7 @@ export const apps = [
     title: "Bunda Sehati Web",
     category: "Web Platform",
     group: "other",
-    mockup: "/project-mockups/web-platform.png",
+    mockup: driveMedia("/project-mockups/web-platform.png"),
     desc: "Platform web untuk kebutuhan informasi, galeri, dan layanan digital Bunda Sehati.",
     longDesc: "Bunda Sehati Web dikembangkan sebagai platform informasi dan layanan digital yang mudah digunakan.",
     points: ["Web profile", "Information page", "Digital gallery", "Responsive design"]
@@ -145,7 +147,7 @@ export const apps = [
     title: "Chat Assistant AI",
     category: "AI Assistant",
     group: "other",
-    mockup: "/project-mockups/ai-engineering.png",
+    mockup: driveMedia("/project-mockups/ai-engineering.png"),
     desc: "Eksplorasi chatbot AI untuk membantu interaksi pengguna dan penyampaian informasi digital.",
     longDesc: "Chat Assistant AI menjadi bagian dari eksperimen Extreme Studios dalam membangun asisten percakapan.",
     points: ["AI chat", "Context response", "Assistant workflow", "User interaction"]
@@ -155,7 +157,7 @@ export const apps = [
     title: "DNA Codex",
     category: "AI Engineering Tool",
     group: "other",
-    mockup: "/project-mockups/ai-engineering.png",
+    mockup: driveMedia("/project-mockups/ai-engineering.png"),
     desc: "Tool engineering untuk membantu pengembangan, analisis, dan otomasi workflow berbasis AI.",
     longDesc: "DNA Codex merupakan project internal untuk mengeksplorasi engineering workflow dan sistem AI.",
     points: ["AI workflow", "Engineering tool", "Automation", "Developer support"]
@@ -165,7 +167,7 @@ export const apps = [
     title: "Extreme Studios Guitar FX Desktop",
     category: "Desktop Audio Technology",
     group: "other",
-    mockup: "/featured/guitar-fx.png",
+    mockup: driveMedia("/featured/guitar-fx.png"),
     desc: "Eksplorasi aplikasi desktop audio untuk kebutuhan efek gitar dan pemrosesan suara.",
     longDesc: "Project desktop Guitar FX memperluas eksperimen audio Extreme Studios di luar platform Android.",
     points: ["Audio processing", "Guitar effects", "Desktop app", "Sound workflow"]
@@ -175,7 +177,7 @@ export const apps = [
     title: "Magic Images Desktop",
     category: "Desktop Image Tool",
     group: "other",
-    mockup: "/project-mockups/creative-tools.png",
+    mockup: driveMedia("/project-mockups/creative-tools.png"),
     desc: "Aplikasi desktop untuk mengeksplorasi pengelolaan dan pemrosesan gambar secara praktis.",
     longDesc: "Magic Images Desktop adalah project eksperimen untuk workflow gambar dan utilitas kreatif.",
     points: ["Image processing", "Desktop utility", "Creative workflow", "Export tool"]
@@ -185,7 +187,7 @@ export const apps = [
     title: "My CLI",
     category: "Developer Tool",
     group: "other",
-    mockup: "/project-mockups/ai-engineering.png",
+    mockup: driveMedia("/project-mockups/ai-engineering.png"),
     desc: "Command-line tool untuk membantu otomasi dan workflow pengembangan project.",
     longDesc: "My CLI dibuat sebagai utilitas developer untuk menjalankan pekerjaan engineering dengan lebih efisien.",
     points: ["CLI workflow", "Automation", "Developer utility", "Project commands"]
@@ -195,7 +197,7 @@ export const apps = [
     title: "The Lyric Chords",
     category: "Music Technology",
     group: "other",
-    mockup: "/project-mockups/creative-tools.png",
+    mockup: driveMedia("/project-mockups/creative-tools.png"),
     desc: "Aplikasi musik untuk membantu analisis audio, lirik, dan chord secara digital.",
     longDesc: "The Lyric Chords mengeksplorasi pemrosesan audio dan bantuan AI untuk workflow musik.",
     points: ["Audio analysis", "Lyrics", "Chord detection", "Music workflow"]
@@ -205,7 +207,7 @@ export const apps = [
     title: "Web PARFI Jatim",
     category: "Web Project · Organization Portal",
     group: "other",
-    mockup: "/project-parfi-jatim/parfi-home.png",
+    mockup: driveMedia("/project-parfi-jatim/parfi-home.png"),
     website: "https://parfijatim.com",
     desc: "Website resmi PARFI Jawa Timur untuk profil organisasi, berita, agenda, dan galeri film. Ini adalah project website, bukan aplikasi.",
     longDesc: "Web PARFI Jatim adalah portal organisasi berbasis website yang dirancang untuk menampilkan informasi, agenda, berita, dan karya perfilman Jawa Timur dalam satu pengalaman digital yang responsif.",
@@ -216,7 +218,7 @@ export const apps = [
     title: "Web Store + Chat Assistant",
     category: "Marketplace & AI Chat",
     group: "other",
-    mockup: "/project-mockups/web-platform.png",
+    mockup: driveMedia("/project-mockups/web-platform.png"),
     desc: "Web store dengan katalog produk dan chatbot untuk membantu pengunjung mendapatkan informasi.",
     longDesc: "Project ini menggabungkan pengalaman marketplace dengan asisten chat untuk mendukung customer.",
     points: ["Product catalog", "Web store", "AI chatbot", "Customer support"]

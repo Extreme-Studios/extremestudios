@@ -10,15 +10,15 @@ const capabilityCards = [
 ];
 
 const projects = [
-  ["DIANA", "Smart Assistant", "AI Engineering", "/generated-diana-ai.png"],
-  ["GUITAR FX", "Android Product", "Audio Technology", "/featured/guitar-fx.png"]
+  ["DIANA", "Smart Assistant", "AI Engineering", driveMedia("/generated-diana-ai.png")],
+  ["GUITAR FX", "Android Product", "Audio Technology", driveMedia("/featured/guitar-fx.png")]
 ];
 
 const parfiScreens = [
-  ["/project-parfi-jatim/parfi-home.png", "Beranda website PARFI Jatim"],
-  ["/project-parfi-jatim/parfi-news.png", "Portal berita PARFI Jatim"],
-  ["/project-parfi-jatim/parfi-agenda.png", "Agenda kegiatan organisasi"],
-  ["/project-parfi-jatim/parfi-film-gallery.png", "Galeri film PARFI Jatim"]
+  [driveMedia("/project-parfi-jatim/parfi-home.png"), "Beranda website PARFI Jatim"],
+  [driveMedia("/project-parfi-jatim/parfi-news.png"), "Portal berita PARFI Jatim"],
+  [driveMedia("/project-parfi-jatim/parfi-agenda.png"), "Agenda kegiatan organisasi"],
+  [driveMedia("/project-parfi-jatim/parfi-film-gallery.png"), "Galeri film PARFI Jatim"]
 ];
 
 function FloatingSystem({ type }) {
@@ -26,7 +26,7 @@ function FloatingSystem({ type }) {
   if (type === "capabilities") return <div className="journey-system journey-system--capabilities">{capabilityCards.map(([index, title, body, icon], cardIndex) => <article className={`journey-capability journey-capability--${cardIndex + 1}`} key={title}><small>{index}</small><i>{icon}</i><strong>{title}</strong><span>{body}</span></article>)}</div>;
   if (type === "web") return <div className="journey-system journey-system--web"><div className="journey-browser"><div><i /><i /><i /><span>yourbrand.com</span></div><section><small>YOUR NEXT WEBSITE</small><b>MAKE IT<br />MEMORABLE.</b><span>Strategy · Design · Build</span></section></div><div className="journey-float-panel journey-float-panel--chat"><b>Chat Assistant</b><span>Ready to help your client</span><i>●</i></div><div className="journey-float-panel journey-float-panel--price"><small>START FROM</small><b>Rp1 jt</b></div></div>;
   if (type === "projects") return <div className="journey-system journey-system--projects"><a href="/projects/web-parfi-jatim" className="journey-parfi-showcase"><div className="journey-parfi-showcase__gallery">{parfiScreens.map(([image, alt]) => <img key={image} src={image} alt={alt} />)}</div><div className="journey-parfi-showcase__copy"><small>WEB PROJECT · ORGANIZATION PORTAL</small><b>Website Resmi<br />PARFI Jatim</b><span>parfijatim.com · Berita · Agenda · Galeri Film</span></div></a>{projects.map(([label, title, category, image], cardIndex) => <article className={`journey-project journey-project--${cardIndex + 1}`} key={label}><img src={image} alt="" /><div><small>{category}</small><b>{label}<br />{title}</b></div></article>)}</div>;
-  return <div className="journey-system journey-system--program"><div className="journey-program-image"><img src="/umkm-naik-kelas-workshop.png" alt="" /></div><div className="journey-program-chip journey-program-chip--one"><small>AI EDUCATION</small><b>AI Engineer<br />Basic</b></div><div className="journey-program-chip journey-program-chip--two"><small>UMKM WORKSHOP</small><b>Naik Kelas<br />Digital</b></div></div>;
+  return <div className="journey-system journey-system--program"><div className="journey-program-image"><img src={driveMedia("/umkm-naik-kelas-workshop.png")} alt="" /></div><div className="journey-program-chip journey-program-chip--one"><small>AI EDUCATION</small><b>AI Engineer<br />Basic</b></div><div className="journey-program-chip journey-program-chip--two"><small>UMKM WORKSHOP</small><b>Naik Kelas<br />Digital</b></div></div>;
 }
 
 function MatrixNeuronField() {
@@ -104,3 +104,4 @@ export default function CinematicJourney() {
     </article>)}
   </section>;
 }
+import { driveMedia } from "../data/driveMedia";
